@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+  }
+  body{
+    background-color: #ddd;
+  }
+  .form-container {
+    background-color: rgba(75, 74, 74, 0.174);
+    padding: 10px 20px;
+    border-radius: 20px;
+    max-width: 1000px;
+    width: 100%;
+    margin: 80px auto;
+    position: Relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+  }
+  
+  h2 {
+    color: #1793d5;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* .form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+  } */
+   .col-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) [col4-start] 0.5fr;
+    gap: 15px;
+    justify-content: space-between;
+    column-gap: 5px;
+}
+  .form-grid {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+  
+  .input-group {
+    position: relative;
+    /* width: 48%; */
+  }
+  
+  .input-group-full {
+    width: 100%;
+  }
+  
+  .input-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #1793d5;
+  }
+  
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: #ffffff;
+    font-size: 14px;
+  }
+  
+  .input-group input:focus,
+  .input-group select:focus,
+  .input-group textarea:focus {
+    outline: none;
+    background-color: #f6f6f6;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: #1793d5;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #eee;
+  }
+  
+  /* @media (max-width: 768px) {
+    .input-group {
+      width: 100%;
+    }
+  }
+   */
+  

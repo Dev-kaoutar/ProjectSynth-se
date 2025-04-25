@@ -22,32 +22,32 @@
 <body>
     <header>
         <div class="logo-container">
-            <a href="../FrontEnd/index.html" class="logo-container">
+            <a href="../FrontEnd/index.php" class="logo-container">
                 <img src="../pics/logo.png" alt="Logo" class="logo" title="Accuiel" />
                 <h3 title="Accuiel">Gestion de Stock</h3>
             </a>
         </div>
 
         <div class="grid-container">
-            <a href="../FrontEnd/index.html">
+            <a href="../FrontEnd/index.php">
                 <div title="Accuiel"><i class="fas fa-home"></i></div>
             </a>
-            <a href="../FrontEnd/Stock.html">
+            <a href="../FrontEnd/Stock.php">
                 <div title="Stock"><i class="fas fa-list"></i></div>
             </a>
-            <a href="../FrontEnd/Entry.html">
+            <a href="../FrontEnd/Entry.php">
                 <div title="Entrées"><i class="fas fa-download"></i></div>
             </a>
-            <a href="../FrontEnd/Exit.html">
+            <a href="../FrontEnd/Exit.php">
                 <div title="Sorties"><i class="fas fa-upload"></i></div>
             </a>
-            <a href="../FrontEnd/Clients.html">
+            <a href="../FrontEnd/Clients.php">
                 <div title="Clients"><i class="fas fa-user-friends"></i></div>
             </a>
-            <a href="../FrontEnd/Suppliers.html">
+            <a href="../FrontEnd/Suppliers.php">
                 <div title="Fournisseurs"><i class="fas fa-user-tie"></i></div>
             </a>
-            <a href="../FrontEnd/Finance.html">
+            <a href="../FrontEnd/Finance.php">
                 <div title="Finances"><i class="fas fa-dollar-sign"></i></div>
             </a>
         </div>
