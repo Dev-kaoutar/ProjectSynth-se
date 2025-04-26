@@ -32,40 +32,37 @@ include 'Header.php';
             <tbody>
                 <tr>
                     <td>001</td>
-                    <td>Stylo Bleu</td>
-                    <td>120</td>
-                    <td>2.50 DH</td>
-                    <td>Papeterie</td>
+                    <td>Smartphone</td>
+                    <td>50</td>
+                    <td>3000.00 DH</td>
+                    <td>Téléphone</td>
                     <td>
                         <button class="edit"><i class="fas fa-edit"></i></button>
                         <button class="details"><i class="fas fa-info-circle"></i></button>
-
                     </td>
                 </tr>
-                <!-- autres lignes ici -->
                 <tr>
                     <td>002</td>
-                    <td>Cahier A4</td>
-                    <td>50</td>
-                    <td>15.00 DH</td>
-                    <td>Papeterie</td>
+                    <td>Ordinateur Portable</td>
+                    <td>30</td>
+                    <td>8000.00 DH</td>
+                    <td>Ordinateur</td>
                     <td>
                         <button class="edit"><i class="fas fa-edit"></i></button>
                         <button class="details"><i class="fas fa-info-circle"></i></button>
-
                     </td>
                 </tr>
                 <tr>
                     <td>003</td>
-                    <td>Gomme</td>
-                    <td>200</td>
-                    <td>1.00 DH</td>
-                    <td>Papeterie</td>
+                    <td>Casque Bluetooth</td>
+                    <td>100</td>
+                    <td>500.00 DH</td>
+                    <td>Casque</td>
                     <td>
                         <button class="edit"><i class="fas fa-edit"></i></button>
                         <button class="details"><i class="fas fa-info-circle"></i></button>
-
                     </td>
+                </tr>
             </tbody>
         </table>
     </div>
