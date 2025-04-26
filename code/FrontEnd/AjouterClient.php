@@ -18,7 +18,7 @@
   <div class="form-container">
     <h2>Ajouter un Client</h2>
     <form action="ajouter_client.php" method="POST">
-      <div class="form-grid">
+      <div class="form-grid"> 
 
 
         <div class="input-group input-group-full">

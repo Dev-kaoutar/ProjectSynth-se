@@ -121,7 +121,7 @@
 
 
 
-      <button type="submit" class="button">Ajouter l'article</button>
+      <button type="submit" class="button" >Ajouter l'article</button>
 
     </form>
 

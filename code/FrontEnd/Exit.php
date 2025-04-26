@@ -44,7 +44,7 @@
           <td>
             <!-- <a href="modifierSortie.php?ref=REF123" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
             <a href="supprimerSortie.php?ref=REF123" class="delete"><i class="fa-solid fa-trash-can"></i></a> -->
-            <a href="detailsSortie.php?ref=REF123" class="view"><i class="fa-solid fa-eye"></i></a>
+            <a href="InfoSortie.php" class="view"><i class="fa-solid fa-eye"></i></a>
           </td>
         </tr>
         <tr>

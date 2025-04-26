@@ -41,7 +41,7 @@
                     <td>Fournisseur X</td>
                     <td>2025-04-09</td>
                     <td>
-                        <a href="detailsEntree.php?ref=REF123" class="view"><i class="fa-solid fa-eye"></i></a>
+                        <a href="InfoEntrer.php" class="view"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
                 <tr>

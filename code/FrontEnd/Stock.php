@@ -37,8 +37,11 @@ include 'Header.php';
                     <td>3000.00 DH</td>
                     <td>Téléphone</td>
                     <td>
-                        <button class="edit"><i class="fas fa-edit"></i></button>
-                        <button class="details"><i class="fas fa-info-circle"></i></button>
+
+                        <button class="edit" onclick="window.location.href='ModifierArticle.php'"><i class="fas fa-edit"></i></button>
+                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
+
+
                     </td>
                 </tr>
                 <tr>
@@ -48,8 +51,11 @@ include 'Header.php';
                     <td>8000.00 DH</td>
                     <td>Ordinateur</td>
                     <td>
-                        <button class="edit"><i class="fas fa-edit"></i></button>
-                        <button class="details"><i class="fas fa-info-circle"></i></button>
+
+                        <button class="edit" onclick="window.location.href='ModifierArticle.php'"><i class="fas fa-edit"></i></button>
+                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
+
+
                     </td>
                 </tr>
                 <tr>
@@ -59,8 +65,12 @@ include 'Header.php';
                     <td>500.00 DH</td>
                     <td>Casque</td>
                     <td>
-                        <button class="edit"><i class="fas fa-edit"></i></button>
-                        <button class="details"><i class="fas fa-info-circle"></i></button>
+
+                        <button class="edit" onclick="window.location.href='ModifierArticle.php'"><i class="fas fa-edit" ></i></button>
+                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
+
+
+                        
                     </td>
                 </tr>
             </tbody>
