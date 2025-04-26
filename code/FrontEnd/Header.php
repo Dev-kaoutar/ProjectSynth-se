@@ -22,14 +22,14 @@
 <body>
     <header>
         <div class="logo-container">
-            <a href="../FrontEnd/index.php" class="logo-container">
+            <a href="../FrontEnd/Home.php" class="logo-container">
                 <img src="../pics/logo.png" alt="Logo" class="logo" title="Accuiel" />
                 <h3 title="Accuiel">Gestion de Stock</h3>
             </a>
         </div>
 
         <div class="grid-container">
-            <a href="../FrontEnd/index.php">
+            <a href="../FrontEnd/Home.php">
                 <div title="Accuiel"><i class="fas fa-home"></i></div>
             </a>
             <a href="../FrontEnd/Stock.php">

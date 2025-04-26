@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/code/CSS/style.css">
+  <link rel="stylesheet" href="../CSS/style.css">
   <!-- <link rel="stylesheet" href="/CSS/styleHeader.css"> -->
   <link
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -18,7 +18,7 @@
   <div class="form-container">
     <h2>Ajouter un Client</h2>
     <form action="ajouter_client.php" method="POST">
-      <div class="form-grid">
+      <div class="form-grid"> 
 
 
         <div class="input-group input-group-full">

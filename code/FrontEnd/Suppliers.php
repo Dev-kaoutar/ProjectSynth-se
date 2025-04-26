@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/code/CSS/styleListes.css">
+  <link rel="stylesheet" href="../CSS/styleListes.css">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
           <td>Maroc</td>
           <td>
             <!-- <a href="modifierSortie.php?ref=REF123" class="edit"><i class="fa-solid fa-pen-to-square"></i></a> -->
-            <a href="detailsSortie.php?ref=REF123" class="view"><i class="fa-solid fa-eye"></i></a>
+            <a href="InfoFornisseur.php" class="view"><i class="fa-solid fa-eye"></i></a>
             <a href="supprimerSortie.php?ref=REF123" class="delete"><i class="fa-solid fa-trash-can"></i></a>
           </td>
 
