@@ -1,5 +1,5 @@
 body {
-  font-family: 'Quicksand', sans-serif;
+  /* font-family: 'Quicksand', sans-serif; */
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,7 @@ body {
 }
 
 .form-container {
+  margin-top: 80px;
   background: white;
   border: 2px solid #1793d5;
   border-radius: 20px;
@@ -19,7 +20,7 @@ body {
   margin-bottom: 30px;
 }
 
-h2, h3 {
+.form-container h2, .form-container h3 {
   text-align: center;
   color: #1793d5;
   margin-bottom: 25px;

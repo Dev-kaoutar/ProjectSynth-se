@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Détails de l'Entrée</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styleInfoEntrer.css">
 </head>
+
 <body>
+  <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
     <h2>📝 Détails de l'Entrée</h2>
     <form id="entryForm" onsubmit="event.preventDefault(); alert('Détails enregistrés ✅');">
@@ -23,14 +26,14 @@
           <label>Date d'Entrée</label>
           <input type="date" value="2025-04-09" readonly />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Mode de Paiement</label>
           <input type="text" value="Virement bancaire" />
         </div>
         <div class="form-group">
           <label>Référence Facture</label>
           <input type="text" value="FAC-0001" />
-        </div>
+        </div> -->
       </div>
 
       <!-- Tableau pour afficher les articles, quantités, prix et totaux -->
@@ -47,20 +50,20 @@
           <tr>
             <td>Article A</td>
             <td><input type="number" value="10" readonly /></td>
-            <td>20€</td>
-            <td>200€</td>
+            <td>200DH</td>
+            <td>2000DH</td>
           </tr>
           <tr>
             <td>Article B</td>
             <td><input type="number" value="5" readonly /></td>
-            <td>15€</td>
-            <td>75€</td>
+            <td>150DH</td>
+            <td>750DH</td>
           </tr>
           <tr>
             <td>Article C</td>
             <td><input type="number" value="5" readonly /></td>
-            <td>10€</td>
-            <td>50€</td>
+            <td>100DH</td>
+            <td>500DH</td>
           </tr>
         </tbody>
       </table>
@@ -71,4 +74,5 @@
     </form>
   </div>
 </body>
+
 </html>
