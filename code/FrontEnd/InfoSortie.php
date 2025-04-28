@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Détails de la Sortie</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styleInfoSortie.css">
 </head>
+
 <body>
+  <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
     <h2>📝 Détails de la Sortie</h2>
     <form id="entryForm" onsubmit="event.preventDefault(); alert('Détails enregistrés ✅');">
@@ -38,20 +41,20 @@
           <tr>
             <td>Article A</td>
             <td><input type="number" value="10" readonly /></td>
-            <td>20€</td>
-            <td>200€</td>
+            <td>20DH</td>
+            <td>200DH</td>
           </tr>
           <tr>
             <td>Article B</td>
             <td><input type="number" value="5" readonly /></td>
-            <td>15€</td>
-            <td>75€</td>
+            <td>15DH</td>
+            <td>75DH</td>
           </tr>
           <tr>
             <td>Article C</td>
             <td><input type="number" value="3" readonly /></td>
-            <td>10€</td>
-            <td>30€</td>
+            <td>10DH</td>
+            <td>30DH</td>
           </tr>
         </tbody>
       </table>
@@ -62,4 +65,5 @@
     </form>
   </div>
 </body>
+
 </html>

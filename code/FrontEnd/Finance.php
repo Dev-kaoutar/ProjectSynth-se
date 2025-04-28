@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Facture Professionnelle</title>
@@ -7,8 +8,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link rel="stylesheet" href="../CSS/styleFinances.css">
 </head>
+
 <body>
-<?php include '../FrontEnd/Header.php'; ?>
+  <?php include '../FrontEnd/Header.php'; ?>
 
   <div class="formulaire">
     <h2>Créer une facture</h2>
@@ -18,7 +20,7 @@
     <input type="text" id="produit" placeholder="Produit">
     <input type="text" id="ref" placeholder="Référence produit">
     <input type="number" id="quantite" placeholder="Quantité" min="1" value="1">
-    <input type="number" id="prix" placeholder="Prix unitaire (€)" min="0" value="0">
+    <input type="number" id="prix" placeholder="Prix unitaire (DH)" min="0" value="0">
     <select id="modePaiement">
       <option value="Virement bancaire">Virement bancaire</option>
       <option value="Chèque">Chèque</option>
@@ -41,16 +43,16 @@
           <th>Réf</th>
           <th>Produit</th>
           <th>Qté</th>
-          <th>PU (€)</th>
-          <th>Total (€)</th>
+          <th>PU (DH)</th>
+          <th>Total (DH)</th>
         </tr>
       </thead>
       <tbody id="corpsFacture"></tbody>
     </table>
 
-    <h3>Total HT : <span id="totalHT">0.00 €</span></h3>
-    <h3>TVA (20%) : <span id="tva">0.00 €</span></h3>
-    <h3>Total TTC : <span id="totalTTC">0.00 €</span></h3>
+    <h3>Total HT : <span id="totalHT">0.00 DH</span></h3>
+    <h3>TVA (20%) : <span id="tva">0.00 DH</span></h3>
+    <h3>Total TTC : <span id="totalTTC">0.00 DH</span></h3>
 
     <p><strong>Méthode de paiement :</strong> <span id="modePaiementFacture">Virement bancaire</span></p>
     <p><strong>Échéance :</strong> Paiement sous 30 jours</p>
@@ -71,7 +73,10 @@
     const totalTTC = document.getElementById("totalTTC");
     const tva = document.getElementById("tva");
     const modePaiementFacture = document.getElementById("modePaiementFacture");
-    const qr = new QRious({ element: document.getElementById("qr"), size: 100 });
+    const qr = new QRious({
+      element: document.getElementById("qr"),
+      size: 100
+    });
 
     let totalHtGeneral = 0;
 
@@ -110,11 +115,11 @@
       corps.innerHTML += ligne;
 
       const montantTVA = totalHtGeneral * 0.2;
-      totalHT.textContent = totalHtGeneral.toFixed(2) + " €";
-      tva.textContent = montantTVA.toFixed(2) + " €";
-      totalTTC.textContent = (totalHtGeneral + montantTVA).toFixed(2) + " €";
+      totalHT.textContent = totalHtGeneral.toFixed(2) + " DH";
+      tva.textContent = montantTVA.toFixed(2) + " DH";
+      totalTTC.textContent = (totalHtGeneral + montantTVA).toFixed(2) + " DH";
 
-      qr.value = `Facture #${numFactureInput}\nClient: ${client}\nTotal TTC: ${(totalHtGeneral + montantTVA).toFixed(2)} €`;
+      qr.value = `Facture #${numFactureInput}\nClient: ${client}\nTotal TTC: ${(totalHtGeneral + montantTVA).toFixed(2)} DH`;
 
       // Réinitialisation des champs sauf client/entreprise
       document.getElementById("produit").value = '';
@@ -134,4 +139,5 @@
     }
   </script>
 </body>
+
 </html>

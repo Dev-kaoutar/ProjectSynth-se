@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Modifier le Fournisseur</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styleInfoFornisseur.css">
 </head>
-<body>
 
+<body>
+  <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
     <h2>📝 Modifier les Informations du Fournisseur</h2>
     <form id="fournisseurForm" onsubmit="event.preventDefault(); alert('Modifications enregistrées ✅');">
@@ -52,38 +54,6 @@
     </form>
   </div>
 
-  <div class="form-container">
-      <h3>📦 Entrées du Fournisseur</h3>
-      <table class="produits-table">
-        <thead>
-          <tr>
-            <th>Date d'entrée</th>
-            <th>Produit</th>
-            <th>Quantité</th>
-            <th>Prix d'achat unitaire (MAD)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="2">24/04/2025</td>
-            <td>Ordinateur Portable</td>
-            <td>15</td>
-            <td>7500 MAD</td>
-          </tr>
-          <tr>
-            <td>Clavier mécanique</td>
-            <td>10</td>
-            <td>350 MAD</td>
-          </tr>
-          <tr>
-            <td>25/04/2025</td>
-            <td>Souris sans fil</td>
-            <td>30</td>
-            <td>120 MAD</td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
-
 </body>
+
 </html>

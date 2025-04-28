@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Détails de l'Article</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/styleDetailleArticle.css">
-  
+
 </head>
+
 <body>
+  <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
     <h2>🔎 Détails de l'Article</h2>
     <form id="detailsForm" class="form-grid">
@@ -49,7 +52,7 @@
       </div>
 
       <div class="button-row full-width">
-        <a href="stock.html">🔙 Retour</a>
+        <a href="stock.php">🔙 Retour</a>
       </div>
     </form>
   </div>
@@ -79,4 +82,5 @@
   </script>
 
 </body>
+
 </html>
