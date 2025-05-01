@@ -10,7 +10,8 @@ CREATE TABLE Fournisseur (
     telephone VARCHAR(20),
     email VARCHAR(255),
     adresse VARCHAR(255),
-    ville VARCHAR(100)
+    ville VARCHAR(100),
+    date_inscription DATE
 );
 
 -- Table Client
@@ -21,7 +22,7 @@ CREATE TABLE Client (
     email VARCHAR(255),
     adresse VARCHAR(255),
     ville VARCHAR(100),
-    DATE_INSCRIPTION DATE
+    date_inscription DATE
 );
 
 -- Table User
