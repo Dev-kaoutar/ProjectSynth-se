@@ -42,7 +42,7 @@ body {
     color: #1793d5;
   }
   
-  input, textarea {
+  input {
     padding: 10px;
     border: 1.5px solid #bbdefb;
     border-radius: 10px;
@@ -50,15 +50,15 @@ body {
     background: #e3f2fd;
   }
   
-  input:read-only, textarea:read-only {
+  input:read-only {
     background-color: #e0e0e0;
     color: #555;
     cursor: not-allowed;
   }
   
-  textarea {
+  /* textarea {
     resize: vertical;
-  }
+  } */
   
   table {
     width: 100%;
@@ -71,7 +71,7 @@ body {
   }
   
   th, td {
-    padding: 10px;
+    padding: 2px;
     text-align: center;
   }
   
