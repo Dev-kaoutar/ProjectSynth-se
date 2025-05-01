@@ -1,3 +1,7 @@
+<?php
+include '../DB/Config.php';
+include '../BackEnd/DetailesFournisseur.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,51 +9,57 @@
   <meta charset="UTF-8">
   <title>Modifier le Fournisseur</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styleInfoFornisseur.css">
+  <link rel="stylesheet" href="../css/styleInfoRH.css">
+  <link rel="stylesheet" href="../css/AjouterSuccess.css">
 </head>
 
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-    <h2>📝 Modifier les Informations du Fournisseur</h2>
-    <form id="fournisseurForm" onsubmit="event.preventDefault(); alert('Modifications enregistrées ✅');">
+    <?php if (!empty($message)): ?>
+      <div class="message-box"><?= $message ?></div>
+    <?php endif; ?>
+    <br>
+    <h2><i class="fas fa-pencil-alt"></i> Modifier les Informations du Fournisseur</h2>
+    <form id="fournisseurForm" method="POST">
       <div class="form-grid">
         <div class="form-group">
           <label>ID du Fournisseur</label>
-          <input type="text" value="98765" readonly />
+          <input type="text" name="id_fournisseur" value="<?= $fournisseur['id_fournisseur']; ?>" readonly />
         </div>
         <div class="form-group">
           <label>Nom du Fournisseur</label>
-          <input type="text" value="Fournisseur XYZ" />
+          <input type="text" name="nom_fournisseur" value="<?= $fournisseur['nom_fournisseur']; ?>" />
         </div>
         <div class="form-group">
           <label>Raison Sociale</label>
-          <input type="text" value="XYZ S.A." />
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" value="contact@xyzfournisseur.com" />
+          <input type="text" name="raison_social" value="<?= $fournisseur['raison_social']; ?>" />
         </div>
         <div class="form-group">
           <label>Téléphone</label>
-          <input type="tel" value="0987654321" />
+          <input type="tel" name="telephone" value="<?= $fournisseur['telephone']; ?>" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" value="<?= $fournisseur['email']; ?>" />
         </div>
         <div class="form-group full-width">
           <label>Adresse</label>
-          <textarea rows="3">456 Rue des Fournisseurs, 75001 Paris</textarea>
+          <textarea name="adresse" rows="3"><?= $fournisseur['adresse']; ?></textarea>
         </div>
         <div class="form-group">
-          <label>Pays</label>
-          <input type="text" value="France" />
+          <label>Ville</label>
+          <input type="text" name="ville" value="<?= $fournisseur['ville']; ?>" />
         </div>
         <div class="form-group">
           <label>Date d'Ajout</label>
-          <input type="date" value="2019-08-20" readonly />
+          <input type="date" name="date_inscription" value="<?= date('Y-m-d') ?>" readonly />
         </div>
+
       </div>
 
       <div class="button-row">
-        <button type="submit">💾 Enregistrer</button>
+        <button type="submit"><i class="fas fa-save"></i> Enregistrer</button>
       </div>
     </form>
   </div>

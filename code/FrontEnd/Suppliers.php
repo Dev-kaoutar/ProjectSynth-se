@@ -1,3 +1,7 @@
+<?php
+include '../DB/Config.php';
+include '../BackEnd/supprimerFournisseur.php'; // Include the backend logic for deleting a supplier
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,32 +23,34 @@
       <thead>
         <tr>
           <th>Nom de fournisseur</th>
-
           <th>Raison Sociale</th>
-          <th>Email</th>
           <th>Téléphone</th>
+          <th>Email</th>
           <th>Adresse</th>
-          <th>pays</th>
+          <th>ville</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Exemple -->
-        <tr>
-          <td>Benali Ahmed</td>
-          <td>TechPlus</td>
-          <td>ahmed@techplus.com</td>
-          <td>0600000000</td>
-          <td>123 Rue Casablanca</td>
-          <td>Maroc</td>
-          <td>
-            <!-- <a href="modifierSortie.php?ref=REF123" class="edit"><i class="fa-solid fa-pen-to-square"></i></a> -->
-            <a href="InfoFornisseur.php" class="view"><i class="fa-solid fa-eye"></i></a>
-            <a href="supprimerSortie.php?ref=REF123" class="delete"><i class="fa-solid fa-trash-can"></i></a>
-          </td>
+        <?php
+        $sql = "SELECT * FROM Fournisseur";
+        $stmt = $pdo->query($sql);
 
-
-        </tr>
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          echo "<tr>";
+          echo "<td>" . htmlspecialchars($row['nom_fournisseur']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['raison_social']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['telephone']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
+          echo "<td>
+                <a href='InfoFornisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
+                <a href='../BackEnd/supprimerFournisseur.php?id=" . $row['id_fournisseur'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce fournisseur ?\")'><i class='fa-solid fa-trash-can'></i></a>
+              </td>";
+          echo "</tr>";
+        }
+        ?>
       </tbody>
     </table>
   </div>

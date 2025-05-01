@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <title>Détails de l'Entrée</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styleInfoEntrer.css">
+  <link rel="stylesheet" href="../css/styleInfoEntreeEtSortie.css">
 </head>
 
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-    <h2>📝 Détails de l'Entrée</h2>
+    <h2><i class="fas fa-file-alt"></i> Détails de l'Entrée</h2>
     <form id="entryForm" onsubmit="event.preventDefault(); alert('Détails enregistrés ✅');">
       <div class="form-grid">
         <div class="form-group">
@@ -69,7 +69,7 @@
       </table>
 
       <div class="button-row">
-        <button type="submit">💾 Enregistrer</button>
+        <button type="submit"><i class="fas fa-save"></i> Enregistrer</button>
       </div>
     </form>
   </div>

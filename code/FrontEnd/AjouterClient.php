@@ -1,3 +1,7 @@
+<?php
+include '../DB/Config.php'; // Include the database configuration file
+include '../BackEnd/BAjouterClient.php'; // Include the backend logic for adding a client
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,18 +11,24 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../CSS/style.css">
-  <!-- <link rel="stylesheet" href="/CSS/styleHeader.css"> -->
+  <link rel="stylesheet" href="../CSS/AjouterSuccess.css">
   <link
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet" />
 </head>
 
 <body>
+
   <?php include 'header.php' ?>
   <div class="form-container">
+    <?php if (!empty($message)): ?>
+      <div class="message-box"><?= $message ?></div>
+    <?php endif; ?>
+    <br>
     <h2>Ajouter un Client</h2>
-    <form action="ajouter_client.php" method="POST">
-      <div class="form-grid"> 
+
+    <form action="AjouterClient.php" method="POST">
+      <div class="form-grid">
 
 
         <div class="input-group input-group-full">
@@ -46,8 +56,8 @@
           <input type="text" name="ville" placeholder="Ville" required>
         </div>
         <div class="input-group input-group-full">
-          <i class="fas fa-flag"></i>
-          <input type="text" name="pays" placeholder="Pays" required>
+          <i class="fas fa-calendar-alt"></i>
+          <input type="Date" name="date_inscription" placeholder="Date d'inscription" value="<?= date('Y-m-d'); ?>" readonly>
         </div>
 
       </div>

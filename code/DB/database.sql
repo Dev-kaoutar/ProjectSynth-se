@@ -19,7 +19,9 @@ CREATE TABLE Client (
     nom_client VARCHAR(255),
     telephone VARCHAR(20),
     email VARCHAR(255),
-    adresse VARCHAR(255)
+    adresse VARCHAR(255),
+    ville VARCHAR(100),
+    DATE_INSCRIPTION DATE
 );
 
 -- Table User
@@ -39,7 +41,8 @@ CREATE TABLE Article (
     categorie VARCHAR(100),
     quantite_stock INT,
     prix_achat INT,
-    prix_vente INT
+    prix_vente INT,
+    Description TEXT,
 );
 
 -- Table EntreeStock

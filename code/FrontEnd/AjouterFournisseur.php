@@ -1,3 +1,7 @@
+<?php
+include '../DB/Config.php'; // Include the database configuration file
+include '../BackEnd/BAjouterFournisseur.php'; // Include the backend logic for adding a supplier
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +11,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/AjouterSuccess.css">
   <link
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet" />
@@ -15,8 +20,12 @@
 <body>
   <?php include 'header.php' ?>
   <div class="form-container">
+  <?php if (!empty($message)): ?>
+      <div class="message-box"><?= $message ?></div>
+    <?php endif; ?>
+    <br>
     <h2>Ajouter un Fournisseur</h2>
-    <form action="ajouter_fournisseur.php" method="POST">
+    <form action="AjouterFournisseur.php" method="POST">
       <div class="form-grid">
 
         <div class="input-group input-group-full">
@@ -50,8 +59,8 @@
         </div>
 
         <div class="input-group input-group-full">
-          <i class="fas fa-flag"></i>
-          <input type="text" name="pays" placeholder="Pays" required>
+          <i class="fas fa-calendar-alt"></i>
+          <input type="Date" name="date_inscription" placeholder="Date d'inscription" value="<?= date('Y-m-d'); ?>" readonly>
         </div>
       </div>
       <button type="submit" class="button">Ajouter le Fournisseur</button>

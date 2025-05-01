@@ -9,12 +9,12 @@ include 'Header.php';
     <title>Gestion de Stock</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/StockStyle.css" />
+    <link rel="stylesheet" href="../css/styleListes.css" />
 
 </head>
 
 <body>
-    <div class="container">
+    <div class="list-container ">
         <h1>Liste de Stock</h1>
 
         <table>

@@ -11,7 +11,6 @@
   <link
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../css/mainStyle.css" />
   <link rel="stylesheet" href="../css/HomeStyle.css">
 </head>
 
