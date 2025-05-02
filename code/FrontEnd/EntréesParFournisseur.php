@@ -1,5 +1,5 @@
 <?php
-include '../DB/config.php'; // هاد الملف فيه الاتصال بقاعدة البيانات
+include '../DB/config.php'; 
 include '../BackEnd/BEntreeParFournisseur.php';
 ?>
 <!DOCTYPE html>

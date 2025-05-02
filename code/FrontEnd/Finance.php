@@ -1,3 +1,6 @@
+<?php
+include '../DB/Config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,17 +29,18 @@
       <option value="Chèque">Chèque</option>
       <option value="Espèces">Espèces</option>
     </select>
-    <button class="btn" onclick="ajouterLigne()">Ajouter au tableau</button>
-    <button class="btn" onclick="exporterPDF()">📄 Exporter PDF</button>
-    <button class="btn" onclick="imprimerFacture()">🖨️ Imprimer</button>
+    <button class="btn" onclick="ajouterLigne()"><i class="fas fa-plus"></i>Ajouter au tableau</button>
+    <button class="btn" onclick="exporterPDF()"><i class="fas fa-file-pdf"></i> Exporter PDF</button>
+    <button class="btn" onclick="enregistrerFacture()"><i class="fas fa-save"></i> Enregistrer dans la base</button>
+
   </div>
 
   <div class="facture" id="facture">
-    <h2>🧾 Facture #<span id="numFacture"></span></h2>
+    <p class="logos"><img src="../pics/logo.png" alt="Logo"></p>
+    <h2><i class="fas fa-file-invoice-dollar"></i> Facture <span id="numFacture"></span></h2>
     <p><strong>Entreprise :</strong> <span id="nomEntreprise">-</span></p>
     <p><strong>Client :</strong> <span id="nomClient">-</span></p>
     <p><strong>Date :</strong> <span id="dateFacture"></span></p>
-
     <table>
       <thead>
         <tr>
@@ -138,6 +142,8 @@
       window.print();
     }
   </script>
+</body>
+
 </body>
 
 </html>
