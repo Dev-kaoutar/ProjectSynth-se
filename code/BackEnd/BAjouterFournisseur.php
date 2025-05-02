@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':date_inscription', $date_inscription);
 
     if ($stmt->execute()) {
-        $message = " Client ajouté avec succès.";
+        $message = " Fournisseur ajouté avec succès.";
         echo "<script>setTimeout(function(){ window.location.href = '../FrontEnd/Suppliers.php'; }, 2000);</script>";
     } else {
-        $message = " Erreur lors de l'ajout du client.";
+        $message = " Erreur lors de l'ajout du fournisseur.";
     }
 }
 ?>

@@ -1,17 +1,20 @@
+<?php
+include '../DB/Config.php';
+include '../BackEnd/BSortieParClient.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/styleInfoFornisseur.css">
+    <title>Sorties des Clients</title>
+    <link rel="stylesheet" href="../css/styleInfoRH.css">
 </head>
 
 <body>
     <?php include '../FrontEnd/Header.php'; ?>
     <div class="form-container">
-        <h3>📦 Sortie du Client</h3>
+        <h3><i class="fas fa-box"></i> Sortie du Client</h3>
         <table class="produits-table">
             <thead>
                 <tr>
@@ -22,26 +25,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td rowspan="2">24/04/2025</td>
-                    <td>Ordinateur Portable</td>
-                    <td>15</td>
-                    <td>7500 DH</td>
-                </tr>
-                <tr>
-                    <td>Clavier mécanique</td>
-                    <td>10</td>
-                    <td>350 DH</td>
-                </tr>
-                <tr>
-                    <td>25/04/2025</td>
-                    <td>Souris sans fil</td>
-                    <td>30</td>
-                    <td>120 DH</td>
-                </tr>
+                <?php
+                $prevDate = '';
+                foreach ($sorties as $row) {
+                    echo "<tr>";
+                    if ($row['date_sortie'] != $prevDate) {
+                        echo "<td>" . htmlspecialchars($row['date_sortie']) . "</td>";
+                        $prevDate = $row['date_sortie'];
+                    } else {
+                        echo "<td></td>";
+                    }
+
+                    echo "<td>" . htmlspecialchars($row['designation']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['quantite']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['prix_vente']) . " DH</td>";
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
-    </div>
     </div>
 </body>
 

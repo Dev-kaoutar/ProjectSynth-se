@@ -1,6 +1,7 @@
 <?php 
 include '../DB/Config.php';
 include '../BackEnd/supprimerClient.php'; // Include the backend logic for deleting a client 
+include '../BackEnd/BSortieParClient.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,8 @@ include '../BackEnd/supprimerClient.php'; // Include the backend logic for delet
             echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
             echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
             echo "<td>
-                <a href='infoClient.php?id=" . $row['id_client'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
+                <a href='InfoClient.php?id=" . $row['id_client'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
+                <a href='SortiesParClient.php?id=" . $row['id_client'] . "' class='history'><i class='fa-solid fa-history'></i></a>
                 <a href='../BackEnd/supprimerClient.php?id=" . $row['id_client'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce client ?\")'><i class='fa-solid fa-trash-can'></i></a>
               </td>";
             echo "</tr>";

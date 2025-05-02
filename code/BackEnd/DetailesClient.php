@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Retourner un message de succès
         if ($stmt->execute()) {
-            $message = " Client ajouté avec succès.";
+            $message = " Client mis à jour avec succès.";
             echo "<script>setTimeout(function(){ window.location.href = '../FrontEnd/Clients.php'; }, 2000);</script>";
         } else {
             $message = " Erreur lors de la mise à jour du client.";
