@@ -1,3 +1,8 @@
+<?php
+// infoEntrer.php
+require_once '../DB/Config.php';
+include '../BackEnd/DetailsEntree.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,35 +10,27 @@
   <meta charset="UTF-8">
   <title>Détails de l'Entrée</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styleInfoEntrer.css">
+  <link rel="stylesheet" href="../css/styleInfoEntreeEtSortie.css">
 </head>
 
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-    <h2>📝 Détails de l'Entrée</h2>
-    <form id="entryForm" onsubmit="event.preventDefault(); alert('Détails enregistrés ✅');">
+    <h2><i class="fas fa-info-circle"></i> Détails de l'Entrée</h2>
+    <form id="entryForm">
       <div class="form-grid">
         <div class="form-group">
           <label>ID de l'entrée</label>
-          <input type="text" value="1" readonly />
+          <input type="text" value="<?= htmlspecialchars($entree['id_entree']) ?>" readonly />
         </div>
         <div class="form-group">
           <label>Fournisseur</label>
-          <input type="text" value="Fournisseur X" />
+          <input type="text" value="<?= htmlspecialchars($entree['nom_fournisseur']) ?>" readonly />
         </div>
         <div class="form-group">
           <label>Date d'Entrée</label>
-          <input type="date" value="2025-04-09" readonly />
+          <input type="date" value="<?= htmlspecialchars($entree['date_entree']) ?>" readonly />
         </div>
-        <!-- <div class="form-group">
-          <label>Mode de Paiement</label>
-          <input type="text" value="Virement bancaire" />
-        </div>
-        <div class="form-group">
-          <label>Référence Facture</label>
-          <input type="text" value="FAC-0001" />
-        </div> -->
       </div>
 
       <!-- Tableau pour afficher les articles, quantités, prix et totaux -->
@@ -47,29 +44,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Article A</td>
-            <td><input type="number" value="10" readonly /></td>
-            <td>200DH</td>
-            <td>2000DH</td>
-          </tr>
-          <tr>
-            <td>Article B</td>
-            <td><input type="number" value="5" readonly /></td>
-            <td>150DH</td>
-            <td>750DH</td>
-          </tr>
-          <tr>
-            <td>Article C</td>
-            <td><input type="number" value="5" readonly /></td>
-            <td>100DH</td>
-            <td>500DH</td>
+          <?php
+          $total_general = 0;
+          foreach ($articles as $article):
+            $total = $article['quantite'] * $article['prix_achat'];
+            $total_general += $total;
+          ?>
+            <tr>
+              <td><?= htmlspecialchars($article['designation']) ?></td>
+              <td><input type="number" value="<?= $article['quantite'] ?>" readonly /></td>
+              <td><?= number_format($article['prix_achat'], 2) ?> DH</td>
+              <td><?= number_format($total, 2) ?> DH</td>
+            </tr>
+          <?php endforeach; ?>
+          <!-- ligne du total général -->
+          <tr style="padding: 10px;">
+            <td colspan="3" style="text-align: right; padding: 10px;"><strong>Total général</strong></td>
+            <td><strong><?= number_format($total_general, 2) ?> DH</strong></td>
           </tr>
         </tbody>
       </table>
 
       <div class="button-row">
-        <button type="submit">💾 Enregistrer</button>
+        <button type="button" onclick="window.location.href='Entry.php'"><i class="fas fa-arrow-left"></i> Retour</button>
       </div>
     </form>
   </div>

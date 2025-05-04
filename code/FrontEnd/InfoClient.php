@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Modifier le Client</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styleInfoFornisseur.css">
+  <link rel="stylesheet" href="../css/styleInfoRH.css">
 </head>
 
 <body>
