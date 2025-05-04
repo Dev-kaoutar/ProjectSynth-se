@@ -54,7 +54,7 @@ function afficherMessage(message, type = "success") {
   setTimeout(() => {
     msgDiv.style.display = "none";
     msgDiv.textContent = "";
-  }, 5000);
+  }, 4000);
 }
 
 function ajouterArticle() {

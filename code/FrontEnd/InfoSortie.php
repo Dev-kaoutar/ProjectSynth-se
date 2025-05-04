@@ -13,7 +13,7 @@ include '../BackEnd/DetailsSortie.php' ?>
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-    <h2><i class="fas fa-info-circle"></i> Détails de la Sortie</h2>
+    <h2><i class="fas fa-sign-out-alt"></i> Détails de la Sortie</h2>
     <form>
       <div class="form-grid">
         <div class="form-group">
@@ -61,7 +61,7 @@ include '../BackEnd/DetailsSortie.php' ?>
       </table>
 
       <div class="button-row">
-        <a href="Exit.php"><button type="button"><i class="fas fa-arrow-left"></i> Retour</button></a>
+        <button type="button" onclick="window.location.href='Exit.php'"><i class="fas fa-arrow-left"></i> Retour</button>
       </div>
     </form>
   </div>

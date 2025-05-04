@@ -1,3 +1,7 @@
+<?php
+include '../DB/config.php'; 
+include '../BackEnd/BEntreeParFournisseur.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +9,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/styleInfoFornisseur.css">
+    <link rel="stylesheet" href="../css/styleInfoRH.css">
 </head>
 
 <body>
     <?php include '../FrontEnd/Header.php'; ?>
     <div class="form-container">
-        <h3>📦 Entrées du Fournisseur</h3>
+        <h3><i class="fas fa-truck"></i>Entrées du Fournisseur</h3>
         <table class="produits-table">
             <thead>
                 <tr>
@@ -22,23 +26,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td rowspan="2">24/04/2025</td>
-                    <td>Ordinateur Portable</td>
-                    <td>15</td>
-                    <td>7500 DH</td>
-                </tr>
-                <tr>
-                    <td>Clavier mécanique</td>
-                    <td>10</td>
-                    <td>350 DH</td>
-                </tr>
-                <tr>
-                    <td>25/04/2025</td>
-                    <td>Souris sans fil</td>
-                    <td>30</td>
-                    <td>120 DH</td>
-                </tr>
+                <?php foreach ($donnees as $date => $articles): ?>
+                    <?php foreach ($articles as $index => $article): ?>
+                        <tr>
+                            <?php if ($index === 0): ?>
+                                <td rowspan="<?= count($articles) ?>"><?= htmlspecialchars($date) ?></td>
+                            <?php endif; ?>
+                            <td><?= htmlspecialchars($article['produit']) ?></td>
+                            <td><?= htmlspecialchars($article['quantite']) ?></td>
+                            <td><?= htmlspecialchars($article['prix_achat']) ?> DH</td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

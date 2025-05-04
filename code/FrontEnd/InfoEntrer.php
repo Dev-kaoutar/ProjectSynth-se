@@ -16,7 +16,7 @@ include '../BackEnd/DetailsEntree.php';
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-    <h2><i class="fas fa-info-circle"></i> Détails de l'Entrée</h2>
+    <h2><i class="fas fa-file-alt"></i> Détails de l'Entrée</h2>
     <form id="entryForm">
       <div class="form-grid">
         <div class="form-group">
