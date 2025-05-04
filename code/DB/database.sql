@@ -17,7 +17,8 @@ CREATE TABLE Fournisseur (
     adresse VARCHAR
 (255),
     ville VARCHAR
-(100)
+(100),
+    date_inscription DATE
 );
 
 -- Table Client
@@ -30,7 +31,10 @@ CREATE TABLE Client (
     email VARCHAR
 (255),
     adresse VARCHAR
-(255)
+(255),
+    ville VARCHAR
+(100),
+    date_inscription DATE
 );
 
 -- Table User
@@ -57,7 +61,8 @@ CREATE TABLE Article (
 (100),
     quantite_stock INT,
     prix_achat INT,
-    prix_vente INT
+    prix_vente INT,
+    Description TEXT
 );
 
 -- Table EntreeStock
