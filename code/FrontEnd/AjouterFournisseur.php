@@ -22,8 +22,12 @@ include '../BackEnd/BAjouterFournisseur.php'; // Include the backend logic for a
   <div class="form-container">
   <?php if (!empty($message)): ?>
       <div class="message-box"><?= $message ?></div>
+      <?php endif; ?>
+    <?php if (!empty($messageE)): ?>
+      <div class="message-box-Error"><?= $messageE ?></div>
     <?php endif; ?>
     <br>
+    <a href="../FrontEnd/Suppliers.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i></a>
     <h2>Ajouter un Fournisseur</h2>
     <form action="AjouterFournisseur.php" method="POST">
       <div class="form-grid">

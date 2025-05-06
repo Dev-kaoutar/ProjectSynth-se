@@ -20,6 +20,7 @@ include '../BackEnd/DetailesFournisseur.php';
       <div class="message-box"><?= $message ?></div>
     <?php endif; ?>
     <br>
+    <a href="../FrontEnd/Suppliers.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i> </a>
     <h2><i class="fas fa-pencil-alt"></i> Modifier les Informations du Fournisseur</h2>
     <form id="fournisseurForm" method="POST">
       <div class="form-grid">

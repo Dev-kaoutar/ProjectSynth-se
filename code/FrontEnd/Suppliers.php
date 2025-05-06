@@ -38,22 +38,27 @@ include '../BackEnd/BEntreeParFournisseur.php';
         $sql = "SELECT * FROM Fournisseur";
         $stmt = $pdo->query($sql);
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          echo "<tr>";
-          echo "<td>" . htmlspecialchars($row['nom_fournisseur']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['raison_social']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['telephone']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
-          echo "<td>
-                <a href='InfoFournisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
-                <a href='EntréesParFournisseur.php?id=" . $row['id_fournisseur'] . "' class='history'><i class='fa-solid fa-history'></i></a>
-                <a href='../BackEnd/supprimerFournisseur.php?id=" . $row['id_fournisseur'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce fournisseur ?\")'><i class='fa-solid fa-trash-can'></i></a>
-              </td>";
-          echo "</tr>";
+        if ($stmt->rowCount() > 0) {
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['nom_fournisseur']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['raison_social']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['telephone']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
+            echo "<td>
+                  <a href='InfoFornisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
+                  <a href='EntréesParFournisseur.php?id=" . $row['id_fournisseur'] . "' class='history'><i class='fa-solid fa-history'></i></a>
+                  <a href='../BackEnd/supprimerFournisseur.php?id=" . $row['id_fournisseur'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce fournisseur ?\")'><i class='fa-solid fa-trash-can'></i></a>
+                </td>";
+            echo "</tr>";
+          }
+        } else {
+          echo "<tr><td colspan='7'>Aucun fournisseur trouvé.</td></tr>";
         }
         ?>
+    
       </tbody>
     </table>
   </div>

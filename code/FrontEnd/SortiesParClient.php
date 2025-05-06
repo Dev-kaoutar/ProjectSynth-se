@@ -14,6 +14,7 @@ include '../BackEnd/BSortieParClient.php';
 <body>
     <?php include '../FrontEnd/Header.php'; ?>
     <div class="form-container">
+        <a href="../FrontEnd/Clients.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i></a>
         <h3><i class="fas fa-box"></i> Sortie du Client</h3>
         <table class="produits-table">
             <thead>
@@ -40,6 +41,9 @@ include '../BackEnd/BSortieParClient.php';
                     echo "<td>" . htmlspecialchars($row['quantite']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['prix_vente']) . " DH</td>";
                     echo "</tr>";
+                }
+                if (empty($sorties)) {
+                    echo "<tr><td colspan='4' style='text-align: center;'>Aucune sortie disponible</td></tr>";
                 }
                 ?>
             </tbody>
