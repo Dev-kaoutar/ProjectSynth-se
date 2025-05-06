@@ -17,7 +17,7 @@ include '../BackEnd/DetailesClient.php';
 <body>
   <?php include '../FrontEnd/Header.php'; ?>
   <div class="form-container">
-  <?php if (!empty($message)): ?>
+    <?php if (!empty($message)): ?>
       <div class="message-box"><?= $message ?></div>
     <?php endif; ?>
     <br>

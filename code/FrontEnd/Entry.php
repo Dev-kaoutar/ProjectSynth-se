@@ -1,3 +1,7 @@
+<?php
+require_once '../DB/Config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +22,7 @@
 
     <div class="list-container">
         <div class="one-line">
-            <h2>Liste des Entrées d'Articles</h2>
+            <h3>Liste des Entrées d'Articles</h3>
             <a href="ajouterEntree.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
         </div>
         <table>
@@ -33,8 +37,9 @@
                 </tr>
             </thead>
             <tbody>
+                <?php include '../BackEnd/ListeEntrees.php'; ?>
                 <!-- Exemple -->
-                <tr>
+                <!-- <tr>
                     <td>1</td>
                     <td>Article A, Article B, Article C</td>
                     <td>20</td>
@@ -63,7 +68,7 @@
                     <td>
                         <a href="detailsEntree.php?ref=REF125" class="view"><i class="fa-solid fa-eye"></i></a>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>

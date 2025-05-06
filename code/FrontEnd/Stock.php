@@ -8,14 +8,13 @@ include 'Header.php';
     <meta charset="UTF-8">
     <title>Gestion de Stock</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/styleListes.css" />
+    <link rel="stylesheet" href="../css/StyleListes.css" />
 
 </head>
 
 <body>
-    <div class="list-container ">
-        <h1>Liste de Stock</h1>
+    <div class="list-container">
+        <h2>Liste de Stock</h2>
 
         <table>
             <thead>
