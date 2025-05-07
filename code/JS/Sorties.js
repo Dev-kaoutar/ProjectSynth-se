@@ -22,20 +22,47 @@ function ajouterArticle() {
   const destinataire = document.querySelector(
     "select[name='destinataire']"
   ).value;
-  const date_sortie = document.getElementById("date_sortie").value;
-  const nom = document.getElementById("nom").value;
-  const quantite = document.getElementById("quantite_sortie").value;
 
-  if (!destinataire || !date_sortie || !nom || !quantite) {
+  const id_client = document
+    .querySelector("select[name='destinataire'] option:checked")
+    .getAttribute("data-id_Client"); // Récupérer l'ID du client sélectionné
+
+  const date_sortie = document.getElementById("date_sortie").value;
+
+  const nom = document.getElementById("nom").value; // Récupérer la valeur de l'option sélectionnée
+
+  const selectNom = document.getElementById("nom");
+  const selectedOption = selectNom.options[selectNom.selectedIndex];
+  const id_article = selectedOption.getAttribute("data-id_Article"); // Récupérer l'ID de l'article sélectionné
+  const quantiteStock = parseInt(selectedOption.getAttribute("data-stock"));
+
+  const quantite = parseInt(document.getElementById("quantite_sortie").value);
+
+  if (!destinataire || !date_sortie || !nom || isNaN(quantite)) {
     afficherMessage("Veuillez remplir tous les champs.", "error");
     return;
   }
 
+  if (quantite <= 0) {
+    afficherMessage("Veuillez entrer une quantité supérieure à 0.", "error");
+    return;
+  }
+
+  if (quantite > quantiteStock) {
+    afficherMessage(
+      `La quantité demandée (${quantite}) dépasse le stock disponible (${quantiteStock}).`,
+      "error"
+    );
+    return;
+  }
+
   const article = {
+    id_client,
     destinataire,
     date_sortie,
     nom,
     quantite,
+    id_article,
   };
   articles.push(article);
   localStorage.setItem("articles", JSON.stringify(articles));
@@ -44,7 +71,7 @@ function ajouterArticle() {
   document.getElementById("tableArticles").style.display = "table";
 
   // Réinitialiser les champs
-  document.getElementById("nom").value = "";
+  selectNom.value = "";
   document.getElementById("quantite_sortie").value = "";
 }
 
@@ -57,8 +84,8 @@ function insererArticleDansTableau(article) {
         <td>${article.nom}</td>
         <td>${article.quantite}</td>
         <td class="actions">
-          <button onclick="modifierArticle(this)" class="edit"><i class="fas fa-edit"></i></button>
-          <button onclick="supprimerArticle(this)" class="delete"><i class="fas fa-trash-alt"></i></button>
+          <button onclick="if(confirm('Voulez-vous vraiment modifier cet article ?')) modifierArticle(this)" class="edit"><i class="fas fa-edit"></i></button>
+          <button onclick="if(confirm('Voulez-vous vraiment supprimer cet article ?')) supprimerArticle(this)" class="delete"><i class="fas fa-trash-alt"></i></button>
         </td>
       `;
   tbody.appendChild(ligne);
@@ -79,7 +106,9 @@ function supprimerArticle(btn) {
   ligne.remove();
   articles.splice(index, 1);
   localStorage.setItem("articles", JSON.stringify(articles));
-  chargerArticles();
+  if (articles.length === 0) {
+    document.getElementById("tableArticles").style.display = "none";
+  }
   afficherMessage("Article supprimé avec succès !");
 }
 
@@ -90,7 +119,9 @@ function modifierArticle(btn) {
   document.getElementById("nom").value = ligne[2].textContent;
   document.getElementById("quantite_sortie").value = ligne[3].textContent;
   supprimerArticle(btn);
-  chargerArticles();
+  if (articles.length === 0) {
+    document.getElementById("tableArticles").style.display = "none";
+  }
   afficherMessage("Article chargé pour modification.");
 }
 
@@ -103,6 +134,7 @@ function chargerClients() {
         const option = document.createElement("option");
         option.value = C.nom_client;
         option.textContent = C.nom_client;
+        option.setAttribute("data-id_Client", C.id_client); // Ajouter l'attribut data-id
         select.appendChild(option);
       });
     })
@@ -117,7 +149,9 @@ function chargerArticlesSelect() {
       data.forEach((a) => {
         const option = document.createElement("option");
         option.value = a.designation;
-        option.textContent = `${a.designation} (stock: ${a.quantite_stock})`;
+        option.textContent = `${a.designation} (${a.quantite_stock})`; // Afficher le stock entre parenthèses
+        option.setAttribute("data-stock", a.quantite_stock); // Ajouter l'attribut data-stock
+        option.setAttribute("data-id_Article", a.id_article); // Ajouter l'attribut data-id
         select.appendChild(option);
       });
     })

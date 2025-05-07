@@ -11,7 +11,7 @@ $sql = "SELECT
     INNER JOIN LigneSortieStock lss ON ss.id_sortie = lss.id_sortie
     INNER JOIN Article a ON lss.id_article = a.id_article
     GROUP BY ss.id_sortie, ss.date_sortie, c.nom_client
-    ORDER BY ss.date_sortie DESC
+    ORDER BY ss.id_sortie DESC
 ";
 
 $stmt = $pdo->prepare($sql);

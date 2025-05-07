@@ -47,7 +47,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
           echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
           echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
           echo "<td>
-                <a href='InfoFournisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
+                <a href='InfoFornisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
                 <a href='EntréesParFournisseur.php?id=" . $row['id_fournisseur'] . "' class='history'><i class='fa-solid fa-history'></i></a>
                 <a href='../BackEnd/supprimerFournisseur.php?id=" . $row['id_fournisseur'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce fournisseur ?\")'><i class='fa-solid fa-trash-can'></i></a>
               </td>";
