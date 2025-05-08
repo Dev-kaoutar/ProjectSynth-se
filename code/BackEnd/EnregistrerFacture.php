@@ -17,6 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lignes = $data['lignes'];
 
     try {
+        $check = $pdo->prepare("SELECT COUNT(*) FROM Facture WHERE numero_facture = ?");
+        $check->execute([$numero]);
+        if ($check->fetchColumn() > 0) {
+            echo json_encode(["success" => false, "message" => "Numéro de facture déjà utilisé."]);
+            exit;
+        }
+
         $stmt = $pdo->prepare("INSERT INTO Facture (numero_facture, date_facture, total_ht, tva, total_ttc, mode_paiement, id_client)
                                 VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$numero, $date, $totalHT, $tva, $totalTTC, $modePaiement, $id_client]);

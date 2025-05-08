@@ -39,7 +39,7 @@ function ajouterLigne() {
     !numFactureInput ||
     !entreprise
   ) {
-    alert("Veuillez remplir tous les champs !");
+    afficherMessage("Veuillez remplir tous les champs !", "error");
     return;
   }
 
@@ -96,7 +96,10 @@ function enregistrerFacture() {
   const client = document.getElementById("client").value;
 
   if (!client || lignes.length === 0) {
-    alert("Veuillez sélectionner un client et ajouter des lignes.");
+    afficherMessage(
+      "Veuillez sélectionner un client et ajouter des lignes.",
+      "error"
+    );
     return;
   }
 
@@ -121,15 +124,15 @@ function enregistrerFacture() {
     .then((res) => res.json())
     .then((res) => {
       if (res.success) {
-        alert("Facture enregistrée avec succès !");
+        afficherMessage("Facture enregistrée avec succès !", "success");
         localStorage.removeItem("lignes");
         location.reload();
       } else {
-        alert("Erreur : " + res.message);
+        afficherMessage("Erreur : " + res.message, "error");
       }
     })
     .catch((err) => {
       console.error("Erreur réseau :", err);
-      alert("Erreur lors de l'enregistrement.");
+      afficherMessage("Erreur lors de l'enregistrement.", "error");
     });
 }

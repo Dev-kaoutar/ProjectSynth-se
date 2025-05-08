@@ -22,6 +22,7 @@ $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO
   <?php include '../FrontEnd/Header.php'; ?>
 
   <div class="formulaire">
+    <div id="message" style="text-align: center; margin-bottom: 10px;"></div>
     <h2>Créer une facture</h2>
     <input type="text" id="numFactureInput" placeholder="Numéro de la facture">
     <input type="text" id="entreprise" placeholder="Nom de l'entreprise (TechStore SARL)">
@@ -82,7 +83,7 @@ $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO
     <canvas id="qr" width="100" height="100"></canvas>
     <p class="footer">Merci pour votre confiance. Facture générée automatiquement.</p>
   </div>
-
+  <script src="../JS/messageError&success.js"></script>
   <script src="../JS/enregistrerFacture.js"></script>
 </body>
 

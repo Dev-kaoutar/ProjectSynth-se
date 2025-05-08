@@ -115,6 +115,7 @@
       <button type="submit" class="button">Valider l'entrée</button>
     </form>
   </div>
+  <script src="../JS/messageError&success.js"></script>
   <script src="../JS/Entrees.js"></script>
 
 </body>
