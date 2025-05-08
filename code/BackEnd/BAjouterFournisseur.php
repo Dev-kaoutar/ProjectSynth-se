@@ -10,6 +10,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ville = $_POST['ville'];
     $date_inscription = $_POST['date_inscription'];
 
+     // Check for duplicate email or phone number
+     $checkSql = "SELECT COUNT(*) FROM Fournisseur WHERE email = :email OR telephone = :telephone";
+     $checkStmt = $pdo->prepare($checkSql);
+     $checkStmt->bindParam(':email', $email);
+     $checkStmt->bindParam(':telephone', $telephone);
+     $checkStmt->execute();
+     $count = $checkStmt->fetchColumn();
+ 
+     if ($count > 0) {
+         $messageE = "Erreur : Email ou numéro de téléphone déjà utilisé.";
+     } else {
+
     // Requête d'insertion
     $sql = "INSERT INTO Fournisseur (nom_fournisseur, raison_social, telephone, email,  adresse, ville, date_inscription)
             VALUES (:nom, :raison_sociale, :telephone, :email,  :adresse, :ville, :date_inscription)";
@@ -27,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = " Fournisseur ajouté avec succès.";
         echo "<script>setTimeout(function(){ window.location.href = '../FrontEnd/Suppliers.php'; }, 2000);</script>";
     } else {
-        $message = " Erreur lors de l'ajout du fournisseur.";
+        $messageE = " Erreur lors de l'ajout du fournisseur.";
     }
+}
 }
 ?>

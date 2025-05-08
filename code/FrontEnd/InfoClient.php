@@ -21,6 +21,7 @@ include '../BackEnd/DetailesClient.php';
       <div class="message-box"><?= $message ?></div>
     <?php endif; ?>
     <br>
+    <a href="../FrontEnd/Clients.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i> </a>
     <h2><i class="fas fa-pencil-alt"></i> Modifier les Informations du Client</h2>
     <form id="clientForm" method="POST">
       <div class="form-grid">

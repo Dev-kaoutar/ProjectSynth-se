@@ -15,6 +15,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
 <body>
     <?php include '../FrontEnd/Header.php'; ?>
     <div class="form-container">
+        <a href="../FrontEnd/Suppliers.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i></a>
         <h3><i class="fas fa-truck"></i>Entrées du Fournisseur</h3>
         <table class="produits-table">
             <thead>
@@ -38,6 +39,11 @@ include '../BackEnd/BEntreeParFournisseur.php';
                         </tr>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
+                <?php if (empty($donnees)): ?>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Aucune entrée disponible</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
