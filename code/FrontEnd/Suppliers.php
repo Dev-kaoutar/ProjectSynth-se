@@ -58,7 +58,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
           echo "<tr><td colspan='7'>Aucun fournisseur trouvé.</td></tr>";
         }
         ?>
-    
+
       </tbody>
     </table>
   </div>

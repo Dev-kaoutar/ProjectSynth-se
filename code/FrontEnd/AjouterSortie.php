@@ -82,7 +82,7 @@
             <button type="submit" class="button">Valider la sortie</button>
         </form>
     </div>
-
+    <script src="../JS/messageError&success.js"></script>
     <script src="../JS/Sorties.js"></script>
 </body>
 
