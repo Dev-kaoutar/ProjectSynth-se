@@ -49,6 +49,7 @@ include '../BackEnd/connexion.php';
         </div>
         <button type="submit" class="btn-login">Se connecter</button>
     </form>
+    
 </div>
 
 </body>

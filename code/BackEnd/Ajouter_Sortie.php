@@ -48,18 +48,12 @@ if ($method === 'POST') {
     try {
         $pdo->beginTransaction();
 
+        $id_client = $articles[0]['id_client'] ?? null;
+        if (!$id_client) {
+            throw new Exception("ID client manquant.");
+        }
         $nom_client = $articles[0]['destinataire'];
         $date_sortie = $articles[0]['date_sortie'];
-
-        // Récupérer l'ID du client
-        $stmt = $pdo->prepare("SELECT id_client FROM Client WHERE nom_client = ?");
-        $stmt->execute([$nom_client]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $id_client = $result['id_client'] ?? null;
-
-        if (!$result) {
-            throw new Exception("Client '$nom_client' introuvable.");
-        }
 
         $stmt = $pdo->prepare("INSERT INTO SortieStock (date_sortie, id_client) VALUES (?, ?)");
         $stmt->execute([$date_sortie, $id_client]);
@@ -68,17 +62,17 @@ if ($method === 'POST') {
         foreach ($articles as $article) {
             $nom_article = $article['nom'];
             $quantite = $article['quantite'];
+            $id_article = $article['id_article'];
 
             // Récupérer l'article avec stock
-            $stmt = $pdo->prepare("SELECT id_article, quantite_stock FROM Article WHERE designation = ?");
-            $stmt->execute([$nom_article]);
+            $stmt = $pdo->prepare("SELECT quantite_stock FROM Article WHERE id_article = ?");
+            $stmt->execute([$id_article]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$result) {
                 throw new Exception("Article '$nom_article' introuvable.");
             }
 
-            $id_article = $result['id_article'];
             $stock_dispo = $result['quantite_stock'];
 
             if ($quantite > $stock_dispo) {

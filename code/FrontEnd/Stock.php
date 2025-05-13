@@ -29,6 +29,7 @@ require '../DB/config.php';
                 </tr>
             </thead>
             <tbody>
+                
                 <?php
                 $sql = "SELECT * FROM Article";
                 $stmt = $pdo->query($sql);

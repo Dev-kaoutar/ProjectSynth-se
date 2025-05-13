@@ -31,4 +31,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erreur = "Erreur : " . $e->getMessage();
     }
 }
+
 ?>

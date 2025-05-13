@@ -26,22 +26,13 @@ try {
 
         // Utiliser les données du premier article pour la création de l'entrée principale
         $premier_article = $articles[0];
-        $fournisseur_nom = trim($premier_article['fournisseur'] ?? '');
+        // $fournisseur_nom = trim($premier_article['fournisseur'] ?? '');
+        $id_fournisseur = $premier_article['id_fournisseur'] ?? null;
         $date_entree = $premier_article['date'] ?? null;
 
-        if (empty($fournisseur_nom) || empty($date_entree)) {
-            throw new Exception("Le nom du fournisseur ou la date d'entrée est manquant(e).");
+        if (empty($id_fournisseur) || empty($date_entree)) {
+            throw new Exception("Le fournisseur ou la date d'entrée est manquant(e).");
         }
-
-        // Trouver l'ID du fournisseur
-        $stmt = $pdo->prepare("SELECT id_fournisseur FROM Fournisseur WHERE nom_fournisseur = ?");
-        $stmt->execute([$fournisseur_nom]);
-        $fournisseur = $stmt->fetch();
-
-        if (!$fournisseur) {
-            throw new Exception("Fournisseur '$fournisseur_nom' introuvable.");
-        }
-        $id_fournisseur = $fournisseur['id_fournisseur'];
 
         // Créer l'entrée principale EntreeStock
         $stmt = $pdo->prepare("INSERT INTO EntreeStock (date_entree, id_fournisseur) VALUES (?, ?)");
