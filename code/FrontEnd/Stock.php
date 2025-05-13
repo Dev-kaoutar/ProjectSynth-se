@@ -1,66 +1,53 @@
 <?php
-include 'Header.php';
+require '../DB/config.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>Gestion de Stock</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="../css/StyleListes.css" />
-
 </head>
-
 <body>
+<?php include '../FrontEnd/Header.php'; ?>
     <div class="list-container">
-        <h2>Liste de Stock</h2>
-
+        <h1>Liste de Stock</h1>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Quantité</th>
-                    <th>Prix</th>
+                    <th>Référence</th>
+                    <th>Désignation</th>
+                    <th>Marque</th>
                     <th>Catégorie</th>
-                    <th>Actions</th>
+                    <th>Quantité</th>
+                    <th>Prix Achat</th>
+                    <th>Prix Vente</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Smartphone</td>
-                    <td>50</td>
-                    <td>3000.00 DH</td>
-                    <td>Téléphone</td>
-                    <td>
-                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td>Ordinateur Portable</td>
-                    <td>30</td>
-                    <td>8000.00 DH</td>
-                    <td>Ordinateur</td>
-                    <td>
-                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>003</td>
-                    <td>Casque Bluetooth</td>
-                    <td>100</td>
-                    <td>500.00 DH</td>
-                    <td>Casque</td>
-                    <td>
-                        <button class="details" onclick="window.location.href='DetailleArticle.php'"><i class="fas fa-info-circle"></i></button>
-                    </td>
-                </tr>
+                <?php
+                $sql = "SELECT * FROM Article";
+                $stmt = $pdo->query($sql);
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<tr>
+                        <td>{$row['id_article']}</td>
+                        <td>{$row['reference']}</td>
+                        <td>{$row['designation']}</td>
+                        <td>{$row['marque']}</td>
+                        <td>{$row['categorie']}</td>
+                        <td>{$row['quantite_stock']}</td>
+                        <td>{$row['prix_achat']} DH</td>
+                        <td>{$row['prix_vente']} DH</td>
+                        <td>{$row['Description']}</td> 
+                    </tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
 </body>
-
 </html>
