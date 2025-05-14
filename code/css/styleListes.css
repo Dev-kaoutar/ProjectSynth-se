@@ -147,8 +147,8 @@
     justify-content: end;
   }
   .search-bar {
-    width: 15%;
-    padding: 8px;
+    width: 200px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }

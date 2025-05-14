@@ -22,12 +22,13 @@ require_once '../DB/Config.php';
 
     <div class="list-container">
         <div class="one-line">
-            <h3>Liste des Entrées d'Articles</h3>
-            <a href="ajouterEntree.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
-        </div>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
-            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+            <h2>Liste des Entrées d'Articles</h2>
+            <div class="one-line">
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+                </div>
+                <a href="ajouterEntree.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
+            </div>
         </div>
         <table>
             <thead>

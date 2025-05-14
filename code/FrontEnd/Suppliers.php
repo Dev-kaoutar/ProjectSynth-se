@@ -19,12 +19,13 @@ include '../BackEnd/BEntreeParFournisseur.php';
   <div class="list-container">
     <div class="one-line">
       <h2>Liste des Fournisseurs</h2>
-      <a href="ajouterFournisseur.php" class="add-user"><i class="fas fa-user-plus"></i></a>
-    </div>
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
-        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-    </div>
+      <div class="one-line">
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+        </div>
+        <a href="ajouterFournisseur.php" class="add-user"><i class="fas fa-user-plus"></i></a>
+      </div>
+    </div>   
     <table>
       <thead>
         <tr>

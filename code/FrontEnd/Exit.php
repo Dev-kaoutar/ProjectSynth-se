@@ -15,11 +15,12 @@
   <div class="list-container">
     <div class="one-line">
       <h2>Liste des Sorties d'Articles</h2>
-      <a href="ajouterSortie.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
-    </div>
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
-        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+      <div class="one-line">
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+        </div>
+        <a href="ajouterSortie.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
+      </div>
     </div>
     <table>
       <thead>

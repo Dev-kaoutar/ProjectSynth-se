@@ -48,13 +48,13 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'success') {
   <div class="list-container">
     <div class="one-line">
       <h2>Liste des Clients</h2>
-      <a href="ajouterClient.php" class="add-user"><i class="fas fa-user-plus"></i></a>
+      <div class="one-line">
+          <div class="search-container">
+              <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+          </div>
+          <a href="ajouterClient.php" class="add-user"><i class="fas fa-user-plus"></i></a>
+      </div>  
     </div>
-    <div class="search-container">
-            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
-            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-        </div>
-
 
     <table>
       <thead>

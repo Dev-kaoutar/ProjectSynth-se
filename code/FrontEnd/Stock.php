@@ -13,7 +13,12 @@ require '../DB/config.php';
 <body>
 <?php include '../FrontEnd/Header.php'; ?>
     <div class="list-container">
-        <h1>Liste de Stock</h1>
+        <div class="one-line">
+        <h2>Liste de Stock</h2>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+        </div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -43,12 +48,13 @@ require '../DB/config.php';
                         <td>{$row['quantite_stock']}</td>
                         <td>{$row['prix_achat']} DH</td>
                         <td>{$row['prix_vente']} DH</td>
-                        <td>{$row['Description']}</td> 
+                        <td>{$row['description']}</td> 
                     </tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
+    <script src="../JS/Search.js"></script>
 </body>
 </html>
