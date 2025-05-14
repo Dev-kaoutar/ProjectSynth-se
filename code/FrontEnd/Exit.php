@@ -17,6 +17,10 @@
       <h2>Liste des Sorties d'Articles</h2>
       <a href="ajouterSortie.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
     </div>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+    </div>
     <table>
       <thead>
         <tr>
@@ -33,7 +37,7 @@
       </tbody>
     </table>
   </div>
-
+  <script src="../JS/Search.js"></script>
 </body>
 
 </html>

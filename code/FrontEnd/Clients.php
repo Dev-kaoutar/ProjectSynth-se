@@ -50,6 +50,10 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'success') {
       <h2>Liste des Clients</h2>
       <a href="ajouterClient.php" class="add-user"><i class="fas fa-user-plus"></i></a>
     </div>
+    <div class="search-container">
+            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+        </div>
 
 
     <table>
@@ -85,6 +89,7 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'success') {
       </tbody>
     </table>
   </div>
+  <script src="../JS/Search.js"></script>
 </body>
 
 </html>

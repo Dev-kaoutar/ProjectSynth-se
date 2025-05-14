@@ -21,6 +21,10 @@ include '../BackEnd/BEntreeParFournisseur.php';
       <h2>Liste des Fournisseurs</h2>
       <a href="ajouterFournisseur.php" class="add-user"><i class="fas fa-user-plus"></i></a>
     </div>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+    </div>
     <table>
       <thead>
         <tr>
@@ -62,7 +66,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
       </tbody>
     </table>
   </div>
-
+  <script src="../JS/Search.js"></script>
 </body>
 
 </html>

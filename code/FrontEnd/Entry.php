@@ -25,6 +25,10 @@ require_once '../DB/Config.php';
             <h3>Liste des Entrées d'Articles</h3>
             <a href="ajouterEntree.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
         </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+        </div>
         <table>
             <thead>
                 <tr>
@@ -37,42 +41,11 @@ require_once '../DB/Config.php';
                 </tr>
             </thead>
             <tbody>
-                <?php include '../BackEnd/ListeEntrees.php'; ?>
-                <!-- Exemple -->
-                <!-- <tr>
-                    <td>1</td>
-                    <td>Article A, Article B, Article C</td>
-                    <td>20</td>
-                    <td>Fournisseur X</td>
-                    <td>2025-04-09</td>
-                    <td>
-                        <a href="InfoEntrer.php" class="view"><i class="fa-solid fa-eye"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Article D, Article E</td>
-                    <td>15</td>
-                    <td>Fournisseur Y</td>
-                    <td>2025-04-10</td>
-                    <td>
-                        <a href="detailsEntree.php?ref=REF124" class="view"><i class="fa-solid fa-eye"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Article F</td>
-                    <td>8</td>
-                    <td>Fournisseur Z</td>
-                    <td>2025-04-11</td>
-                    <td>
-                        <a href="detailsEntree.php?ref=REF125" class="view"><i class="fa-solid fa-eye"></i></a>
-                    </td>
-                </tr> -->
+                <?php include '../BackEnd/ListeEntrees.php'; ?>                
             </tbody>
         </table>
     </div>
-
+    <script src="../JS/Search.js"></script>
 </body>
 
 </html>
