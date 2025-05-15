@@ -44,7 +44,7 @@ CREATE TABLE Article (
     quantite_stock INT,
     prix_achat INT,
     prix_vente INT,
-    Description TEXT
+    description TEXT.
 );
 
 -- Table EntreeStock

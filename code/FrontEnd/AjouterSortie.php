@@ -30,6 +30,21 @@
             cursor: pointer;
             padding: 10px;
         }
+
+        @media (max-width: 530px) {
+        
+          .list-container {
+            padding: 5px 0px;
+          }
+          table {
+            font-size: 10px;
+          }
+          th, td {
+            padding: 0px 1px;
+          }
+
+        } 
+
     </style>
 </head>
 
