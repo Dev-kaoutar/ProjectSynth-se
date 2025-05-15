@@ -10,9 +10,5 @@ if (isset($_GET['id'])) {
     // Redirection vers la liste après suppression
     header("Location: ../FrontEnd/Suppliers.php");
     exit;
-}else {
-    // Redirection vers la liste si l'ID n'est pas fourni
-    header("Location: ../FrontEnd/Suppliers.php");
-    exit;
 }
 

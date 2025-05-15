@@ -1,5 +1,5 @@
 <?php
-include '../DB/config.php'; // هاد الملف فيه الاتصال بقاعدة البيانات
+include '../DB/config.php'; 
 
 try {
     $query = "
@@ -18,7 +18,7 @@ try {
     $stmt->execute();
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // ترتيب المعطيات حسب التاريخ
+    // Organiser les données par date d'entrée
     $donnees = [];
     foreach ($resultats as $row) {
         $donnees[$row['date_entree']][] = $row;
