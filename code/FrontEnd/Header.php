@@ -52,7 +52,7 @@
             </a>
         </div>
 
-        <div id="signOut" title="Déconnexion">
+        <div id="signOut" title="Déconnexion" onclick="window.location.href='../FrontEnd/connexion.php'" >
             <span class="material-icons icon">power_settings_new</span>
         </div>
     </header>
