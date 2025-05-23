@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['id_user'])) {
+    header('location: Connexion.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -52,7 +58,7 @@
             </a>
         </div>
 
-        <div id="signOut" title="Déconnexion" onclick="window.location.href='../FrontEnd/connexion.php'" >
+        <div id="signOut" title="Déconnexion" onclick="window.location.href='../BackEnd/Deconnexion.php'">
             <span class="material-icons icon">power_settings_new</span>
         </div>
     </header>

@@ -34,17 +34,17 @@ require_once '../DB/Config.php';
             <thead>
                 <tr>
                     <th>ID d'entrée</th>
-                    <th>Articles Entrés</th>
-                    <th>Quantité Entrée</th>
                     <th>Fournisseur</th>
                     <th>Date d'Entrée</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php include '../BackEnd/ListeEntrees.php'; ?>                
+                <?php include '../BackEnd/ListeEntrees.php'; ?>
             </tbody>
         </table>
+        <!-- Pagination -->
+        <?php include '../FrontEnd/Pagination.php'; ?>
     </div>
     <script src="../JS/Search.js"></script>
 </body>
