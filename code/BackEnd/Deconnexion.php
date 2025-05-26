@@ -7,7 +7,7 @@ session_unset();
 // Détruire la session
 session_destroy();
 
-header("Location: Connexion.php");
+header("Location: ../FrontEnd/Connexion.php");
 exit;
 
 ?>

@@ -23,8 +23,6 @@ if ($sorties) {
     foreach ($sorties as $sortie) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($sortie['id_sortie']) . "</td>";
-        echo "<td>" . htmlspecialchars($sortie['articles']) . "</td>";
-        echo "<td>" . htmlspecialchars($sortie['quantite_totale']) . "</td>";
         echo "<td>" . htmlspecialchars($sortie['nom_client']) . "</td>";
         echo "<td>" . htmlspecialchars($sortie['date_sortie']) . "</td>";
         echo "<td><a href='../FrontEnd/InfoSortie.php?id=" . $sortie['id_sortie'] . "' class='view'><i class='fa-solid fa-eye'></i></a></td>";

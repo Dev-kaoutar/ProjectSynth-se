@@ -26,8 +26,6 @@
       <thead>
         <tr>
           <th>ID de sortie</th>
-          <th>Articles Sorties</th>
-          <th>Quantité Sortie</th>
           <th>Destinataire</th>
           <th>Date de Sortie</th>
           <th>Actions</th>

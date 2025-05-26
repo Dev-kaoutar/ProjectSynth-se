@@ -1,8 +1,31 @@
 <?php
-require '../DB/config.php'; 
+require '../DB/config.php';
+
+// Définir le nombre d'articles par page
+$limit = 25;
+
+// Déterminer la page actuelle à partir de l'URL (par défaut à 1)
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculer l'offset
+$offset = ($page - 1) * $limit;
+
+// Compter le nombre total d'articles
+$totalQuery = $pdo->query("SELECT COUNT(*) FROM Article");
+$totalArticles = $totalQuery->fetchColumn();
+$totalPages = ceil($totalArticles / $limit);
+
+// Récupérer les articles pour la page actuelle
+$sql = "SELECT * FROM Article LIMIT :limit OFFSET :offset";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Gestion de Stock</title>
@@ -10,14 +33,15 @@ require '../DB/config.php';
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="../css/StyleListes.css" />
 </head>
+
 <body>
-<?php include '../FrontEnd/Header.php'; ?>
+    <?php include '../FrontEnd/Header.php'; ?>
     <div class="list-container">
         <div class="one-line">
-        <h2>Liste de Stock</h2>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
-        </div>
+            <h2>Liste de Stock</h2>
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+            </div>
         </div>
         <table>
             <thead>
@@ -34,11 +58,9 @@ require '../DB/config.php';
                 </tr>
             </thead>
             <tbody>
-                
+
                 <?php
-                $sql = "SELECT * FROM Article";
-                $stmt = $pdo->query($sql);
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                foreach ($articles as $row) {
                     echo "<tr>
                         <td>{$row['id_article']}</td>
                         <td>{$row['reference']}</td>
@@ -54,7 +76,10 @@ require '../DB/config.php';
                 ?>
             </tbody>
         </table>
+        <!-- Pagination -->
+        <?php include '../FrontEnd/Pagination.php'; ?>
     </div>
     <script src="../JS/Search.js"></script>
 </body>
+
 </html>
