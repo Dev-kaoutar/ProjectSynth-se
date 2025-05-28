@@ -3,50 +3,52 @@ include '../DB/config.php';
 include '../BackEnd/BEntreeParFournisseur.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Entrées du Fournisseur</title>
     <link rel="stylesheet" href="../css/styleInfoRH.css">
+    <link rel="stylesheet" href="../css/styleListes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <?php include '../FrontEnd/Header.php'; ?>
     <div class="form-container">
         <a href="../FrontEnd/Suppliers.php"><i class="fas fa-arrow-left" style="color: #1793d5;"></i></a>
-        <h3><i class="fas fa-truck"></i>Entrées du Fournisseur</h3>
+        <h3><i class="fas fa-truck"></i> Entrées du Fournisseur</h3>
         <table class="produits-table">
             <thead>
                 <tr>
-                    <th>Date d'entrée</th>
-                    <th>Produit</th>
-                    <th>Quantité</th>
-                    <th>Prix d'achat unitaire (DH)</th>
+                    <th>Date</th>
+                    <th>Total Produits</th>
+                    <th>Total Prix (DH)</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($donnees as $date => $articles): ?>
-                    <?php foreach ($articles as $index => $article): ?>
+                <?php if (!empty($donnees)): ?>
+                    <?php foreach ($donnees as $id_entree => $info): 
+                        $articles = $info['articles'];
+                        $date = $info['date'];
+                        $totalProduits = count($articles);
+                        $totalPrix = array_sum(array_column($articles, 'prix_achat'));
+                    ?>
                         <tr>
-                            <?php if ($index === 0): ?>
-                                <td rowspan="<?= count($articles) ?>"><?= htmlspecialchars($date) ?></td>
-                            <?php endif; ?>
-                            <td><?= htmlspecialchars($article['produit']) ?></td>
-                            <td><?= htmlspecialchars($article['quantite']) ?></td>
-                            <td><?= htmlspecialchars($article['prix_achat']) ?> DH</td>
+                            <td><?= htmlspecialchars($date) ?></td>
+                            <td><?= $totalProduits ?></td>
+                            <td><?= number_format($totalPrix, 2) ?> DH</td>
+                            <td>
+                                <a href="DetailsEntree.php?id=<?= $id_entree ?>" class="view">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
-                <?php endforeach; ?>
-                <?php if (empty($donnees)): ?>
-                    <tr>
-                        <td colspan="4" style="text-align: center;">Aucune entrée disponible</td>
-                    </tr>
+                <?php else: ?>
+                    <tr><td colspan="5" style="text-align: center;">Aucune entrée disponible</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
 </body>
-
 </html>

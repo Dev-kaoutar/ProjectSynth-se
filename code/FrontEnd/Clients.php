@@ -90,8 +90,8 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'success') {
               <td><?= htmlspecialchars($row['adresse']) ?></td>
               <td><?= htmlspecialchars($row['ville']) ?></td>
               <td>
-                <a href="InfoClient.php?id=<?= $row['id_client'] ?>" class="view"><i class="fa-solid fa-eye"></i></a>
                 <a href="SortiesParClient.php?id=<?= $row['id_client'] ?>" class="history"><i class="fa-solid fa-history"></i></a>
+                <a href="InfoClient.php?id=<?= $row['id_client'] ?>" class="edit"><i class="fas fa-edit"></i></a>
                 <a href="../BackEnd/supprimerClient.php?id=<?= $row['id_client'] ?>" class="delete" onclick="return confirm('Voulez-vous vraiment supprimer ce client ?')"><i class="fa-solid fa-trash-can"></i></a>
               </td>
             </tr>
