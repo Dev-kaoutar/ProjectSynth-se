@@ -1,20 +1,23 @@
-let articles = [];
+window.onload = function () {
+  chargerFournisseurs();
+  chargerArticlesDisponibles();
+  chargerArticles();
+};
 
 function getFormData() {
   const form = document.forms["formArticles"];
+  const referenceSelect = form.reference;
+  const selectedOption = referenceSelect.options[referenceSelect.selectedIndex];
+
   return {
     id_fournisseur: form.fournisseur.options[
       form.fournisseur.selectedIndex
     ].getAttribute("data-id_fournisseur"),
     fournisseur: form.fournisseur.value.trim(),
-    reference: form.reference.value.trim(),
-    nom: form.nom.value.trim(),
-    categorie: form.categorie.value.trim(),
-    marque: form.marque.value.trim(),
+    reference: referenceSelect.value.trim(),
+    nom: selectedOption.getAttribute("data-nom") || "",
     quantite: parseInt(form.quantite.value),
-    prix: parseFloat(form.prix_unitaire.value),
     date: form.date_ajout.value,
-    description: form.description.value.trim(),
   };
 }
 
@@ -42,24 +45,6 @@ function viderFormulaire() {
   });
 }
 
-// function afficherMessage(message, type = "success") {
-//   const msgDiv = document.getElementById("message");
-//   msgDiv.style.display = "block";
-//   msgDiv.textContent = message;
-//   msgDiv.style.color = type === "success" ? "green" : "red";
-//   msgDiv.style.fontWeight = "bold";
-//   msgDiv.style.backgroundColor = type === "success" ? "#d4edda" : "#f8d7da";
-//   msgDiv.style.border =
-//     "1px solid" + type === "success" ? "#c3e6cb" : "#f5c6cb";
-//   msgDiv.style.padding = "10px";
-//   msgDiv.style.borderRadius = "5px";
-
-//   setTimeout(() => {
-//     msgDiv.style.display = "none";
-//     msgDiv.textContent = "";
-//   }, 4000);
-// }
-
 function ajouterArticle() {
   const article = getFormData();
 
@@ -79,23 +64,17 @@ function afficherArticleDansTable(article, index) {
   const tbody = document.querySelector("#tableArticles tbody");
   const tr = document.createElement("tr");
   tr.setAttribute("data-index", index);
-
   tr.innerHTML = `
     <td>${article.fournisseur}</td>
     <td>${article.reference}</td>
     <td>${article.nom}</td>
-    <td>${article.categorie}</td>
-    <td>${article.marque}</td>
     <td>${article.quantite}</td>
-    <td>${article.prix}</td>
     <td>${article.date}</td>
-    <td>${article.description}</td>
     <td class="actions">
-      <button onclick="modifierArticle(this)" class="edit"><i class="fas fa-edit"></i></button>
-      <button onclick="supprimerArticle(this)" class="delete"><i class="fas fa-trash-alt"></i></button>
+      <button onclick="if(confirm('Voulez-vous vraiment modifier cet article ?')) modifierArticle(this)" class="edit"><i class="fas fa-edit"></i></button>
+      <button onclick="if(confirm('Voulez-vous vraiment supprimer cet article ?')) supprimerArticle(this)" class="delete"><i class="fas fa-trash-alt"></i></button>
     </td>
   `;
-
   tbody.appendChild(tr);
 }
 
@@ -134,13 +113,9 @@ function modifierArticle(button) {
     const form = document.forms["formArticles"];
     form.fournisseur.value = article.fournisseur;
     form.reference.value = article.reference;
-    form.nom.value = article.nom;
-    form.categorie.value = article.categorie;
-    form.marque.value = article.marque;
+
     form.quantite.value = article.quantite;
-    form.prix_unitaire.value = article.prix;
     form.date_ajout.value = article.date;
-    form.description.value = article.description;
 
     articles.splice(index, 1);
     localStorage.setItem("articles", JSON.stringify(articles));
@@ -150,19 +125,35 @@ function modifierArticle(button) {
 }
 
 function chargerFournisseurs() {
-  fetch("../BackEnd/Ajouter_Entree.php")
+  fetch("../BackEnd/Ajouter_Entree.php?fournisseurs=1")
     .then((response) => response.json())
     .then((data) => {
       const select = document.getElementById("fournisseur");
-      data.forEach((f) => {
-        const opt = document.createElement("option");
-        opt.value = f.nom_fournisseur;
-        opt.textContent = f.nom_fournisseur;
-        opt.setAttribute("data-id_fournisseur", f.id_fournisseur);
-        select.appendChild(opt);
+      data.forEach((fournisseur) => {
+        const option = document.createElement("option");
+        option.value = fournisseur.nom_fournisseur;
+        option.setAttribute("data-id_fournisseur", fournisseur.id_fournisseur);
+        option.textContent = fournisseur.nom_fournisseur;
+        select.appendChild(option);
       });
     })
-    .catch((err) => afficherMessage("Erreur chargement fournisseurs", "error"));
+    .catch(() => afficherMessage("Erreur chargement fournisseurs", "error"));
+}
+
+function chargerArticlesDisponibles() {
+  fetch("../BackEnd/Ajouter_Entree.php?articles=1")
+    .then((response) => response.json())
+    .then((data) => {
+      const select = document.getElementById("reference");
+      data.forEach((article) => {
+        const option = document.createElement("option");
+        option.value = article.reference;
+        option.textContent = `${article.reference} - ${article.designation}`;
+        option.setAttribute("data-nom", article.designation);
+        select.appendChild(option);
+      });
+    })
+    .catch(() => afficherMessage("Erreur chargement articles", "error"));
 }
 
 function soumettreFormulaire(event) {
@@ -201,8 +192,3 @@ function soumettreFormulaire(event) {
 document
   .getElementById("formArticles")
   .addEventListener("submit", soumettreFormulaire);
-
-window.onload = function () {
-  chargerFournisseurs();
-  chargerArticles();
-};

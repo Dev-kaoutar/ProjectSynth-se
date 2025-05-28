@@ -54,7 +54,7 @@ include '../BackEnd/DetailesFournisseur.php';
         </div>
         <div class="form-group">
           <label>Date d'Ajout</label>
-          <input type="date" name="date_inscription" value="<?= date('Y-m-d') ?>" readonly />
+          <input type="date" name="date_inscription" value="<?= $fournisseur['date_inscription']; ?>" readonly />
         </div>
 
       </div>

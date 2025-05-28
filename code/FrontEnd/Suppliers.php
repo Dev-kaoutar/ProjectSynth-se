@@ -3,6 +3,22 @@ include '../DB/Config.php';
 include '../BackEnd/supprimerFournisseur.php'; // Include the backend logic for deleting a supplier
 include '../BackEnd/BEntreeParFournisseur.php';
 
+$limit = 25;
+
+// Déterminer la page actuelle à partir de l'URL (par défaut à 1)
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculer l'offset
+$offset = ($page - 1) * $limit;
+
+// Compter le nombre total d'articles
+$totalQuery = $pdo->query("SELECT COUNT(*) FROM Fournisseur");
+$totalArticles = $totalQuery->fetchColumn();
+$totalPages = ceil($totalArticles / $limit);
+
+$sql = "SELECT * FROM Fournisseur WHERE actif = 1 ORDER BY id_fournisseur LIMIT $limit OFFSET $offset"; // Fetch only active suppliers
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +41,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
         </div>
         <a href="ajouterFournisseur.php" class="add-user"><i class="fas fa-user-plus"></i></a>
       </div>
-    </div>   
+    </div>
     <table>
       <thead>
         <tr>
@@ -40,9 +56,6 @@ include '../BackEnd/BEntreeParFournisseur.php';
       </thead>
       <tbody>
         <?php
-        $sql = "SELECT * FROM Fournisseur";
-        $stmt = $pdo->query($sql);
-
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
@@ -66,6 +79,8 @@ include '../BackEnd/BEntreeParFournisseur.php';
 
       </tbody>
     </table>
+    <!-- Pagination -->
+    <?php include '../FrontEnd/Pagination.php'; ?>
   </div>
   <script src="../JS/Search.js"></script>
 </body>
