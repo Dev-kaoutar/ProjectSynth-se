@@ -35,6 +35,8 @@
         <?php include '../BackEnd/ListeSorties.php'; ?>
       </tbody>
     </table>
+    <!-- Pagination -->
+    <?php include 'Pagination.php'; ?>
   </div>
   <script src="../JS/Search.js"></script>
 </body>

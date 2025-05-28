@@ -39,8 +39,11 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="list-container">
         <div class="one-line">
             <h2>Liste de Stock</h2>
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+            <div class="one-line">
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="🔍︎ Rechercher..." onkeyup="search()">
+                </div>
+                <a href="ajouterArticle.php" class="add"><i class="fas fa-plus-circle add-icon"></i></a>
             </div>
         </div>
         <table>

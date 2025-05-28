@@ -15,18 +15,15 @@ include '../BackEnd/DetailsSortie.php' ?>
   <div class="form-container">
     <h2><i class="fas fa-sign-out-alt"></i> Détails de la Sortie</h2>
     <form>
-      <div class="form-grid">
+      <div class="">
         <div class="form-group">
-          <label>ID de la sortie</label>
-          <input type="text" value="<?= htmlspecialchars($sortie['id_sortie']) ?>" readonly />
+          <label>ID de la sortie : <span><?= htmlspecialchars($sortie['id_sortie']) ?></span></label>
         </div>
         <div class="form-group">
-          <label>Client</label>
-          <input type="text" value="<?= htmlspecialchars($sortie['nom_client']) ?>" readonly />
+          <label>Client : <span><?= htmlspecialchars($sortie['nom_client']) ?></span></label>
         </div>
         <div class="form-group">
-          <label>Date de Sortie</label>
-          <input type="date" value="<?= htmlspecialchars($sortie['date_sortie']) ?>" readonly />
+          <label>Date de Sortie : <span><?= htmlspecialchars($sortie['date_sortie']) ?></span></label>
         </div>
       </div>
 
@@ -48,7 +45,7 @@ include '../BackEnd/DetailsSortie.php' ?>
           ?>
             <tr>
               <td><?= htmlspecialchars($article['designation']) ?></td>
-              <td><input type="number" value="<?= $article['quantite'] ?>" readonly /></td>
+              <td><?= $article['quantite'] ?></td>
               <td><?= number_format($article['prix_vente'], 2) ?> DH</td>
               <td><?= number_format($total, 2) ?> DH</td>
             </tr>

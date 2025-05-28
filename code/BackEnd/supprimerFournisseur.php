@@ -4,7 +4,7 @@ include '../DB/Config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $stmt = $pdo->prepare("DELETE FROM Fournisseur WHERE id_fournisseur = ?");
+    $stmt = $pdo->prepare("UPDATE Fournisseur SET actif = 0 WHERE id_fournisseur = ?");
     $stmt->execute([$id]);
 
     // Redirection vers la liste après suppression

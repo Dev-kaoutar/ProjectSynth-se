@@ -18,18 +18,18 @@ include '../BackEnd/DetailsEntree.php';
   <div class="form-container">
     <h2><i class="fas fa-file-alt"></i> Détails de l'Entrée</h2>
     <form id="entryForm">
-      <div class="form-grid">
+      <div class="">
         <div class="form-group">
-          <label>ID de l'entrée</label>
-          <input type="text" value="<?= htmlspecialchars($entree['id_entree']) ?>" readonly />
+          <label>ID de l'entrée : <span><?= htmlspecialchars($entree['id_entree']) ?></span></label>
+          <!-- <input type="text" value="<?= htmlspecialchars($entree['id_entree']) ?>" readonly /> -->
         </div>
         <div class="form-group">
-          <label>Fournisseur</label>
-          <input type="text" value="<?= htmlspecialchars($entree['nom_fournisseur']) ?>" readonly />
+          <label>Fournisseur : <span><?= htmlspecialchars($entree['nom_fournisseur']) ?></span></label>
+          <!-- <input type="text" value="<?= htmlspecialchars($entree['nom_fournisseur']) ?>" readonly /> -->
         </div>
         <div class="form-group">
-          <label>Date d'Entrée</label>
-          <input type="date" value="<?= htmlspecialchars($entree['date_entree']) ?>" readonly />
+          <label>Date d'Entrée : <span><?= htmlspecialchars($entree['date_entree']) ?></span></label>
+          <!-- <input type="date" value="<?= htmlspecialchars($entree['date_entree']) ?>" readonly /> -->
         </div>
       </div>
 
@@ -52,14 +52,14 @@ include '../BackEnd/DetailsEntree.php';
           ?>
             <tr>
               <td><?= htmlspecialchars($article['designation']) ?></td>
-              <td><input type="number" value="<?= $article['quantite'] ?>" readonly /></td>
+              <td><?= $article['quantite'] ?></td>
               <td><?= number_format($article['prix_achat'], 2) ?> DH</td>
               <td><?= number_format($total, 2) ?> DH</td>
             </tr>
           <?php endforeach; ?>
           <!-- ligne du total général -->
-          <tr style="padding: 10px;">
-            <td colspan="3" style="text-align: right; padding: 10px;"><strong>Total général</strong></td>
+          <tr>
+            <td colspan="3" style="text-align: right; padding-right: 20px;"><strong>Total général</strong></td>
             <td><strong><?= number_format($total_general, 2) ?> DH</strong></td>
           </tr>
         </tbody>

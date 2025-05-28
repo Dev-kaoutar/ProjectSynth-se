@@ -7,10 +7,23 @@ $typeMessage = '';
 
 // Traitement des erreurs
 try {
-    // Connexion et requête sécurisée
-    $sql = "SELECT * FROM Client";
-    $stmt = $pdo->query($sql);
-    $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $limit = 25;
+
+  // Déterminer la page actuelle à partir de l'URL (par défaut à 1)
+  $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+
+  // Calculer l'offset
+  $offset = ($page - 1) * $limit;
+
+  // Compter le nombre total d'articles
+  $totalQuery = $pdo->query("SELECT COUNT(*) FROM Client");
+  $totalArticles = $totalQuery->fetchColumn();
+  $totalPages = ceil($totalArticles / $limit);
+
+  $sql = "SELECT * FROM Client WHERE actif = 1 ORDER BY id_client LIMIT $limit OFFSET $offset"; // Fetch only active suppliers
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $message = "Erreur lors du chargement des clients : " . htmlspecialchars($e->getMessage());
     $typeMessage = 'error';
@@ -88,6 +101,8 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 'success') {
         <?php endif; ?>
       </tbody>
     </table>
+    <!-- Pagination -->
+    <?php include '../FrontEnd/Pagination.php'; ?>
   </div>
   <script src="../JS/Search.js"></script>
 </body>

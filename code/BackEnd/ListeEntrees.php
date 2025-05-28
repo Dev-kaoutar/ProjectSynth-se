@@ -2,7 +2,7 @@
 require_once '../DB/Config.php';
 
 // Paramètres de pagination
-$limit = 10; // Nombre d'enregistrements par page
+$limit = 25; // Nombre d'enregistrements par page
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
