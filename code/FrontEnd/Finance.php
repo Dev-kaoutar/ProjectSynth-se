@@ -6,7 +6,12 @@ $articles = $pdo->query("SELECT reference, designation, prix_vente FROM Article"
 
 // Récupération des clients
 $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO::FETCH_ASSOC);
-?>
+
+// Génération automatique du numéro de facture
+$dernierNumero = $pdo->query("SELECT MAX(id_facture) AS max_id FROM Facture")->fetch(PDO::FETCH_ASSOC)['max_id'] ?? 0;
+$nouveauNumero =  str_pad($dernierNumero + 1, 3, '0', STR_PAD_LEFT). "/" . date('Y');
+?> 
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,7 +29,7 @@ $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO
   <div class="formulaire">
     <div id="message" style="text-align: center; margin-bottom: 10px;"></div>
     <h2>Créer une facture</h2>
-    <input type="text" id="numFactureInput" placeholder="Numéro de la facture">
+    <input type="text" id="numFactureInput" value="<?= $nouveauNumero ?>" readonly>
     <input type="text" id="entreprise" placeholder="Nom de l'entreprise (TechStore SARL)">
 
     <select id="client">
@@ -57,9 +62,14 @@ $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO
     <button class="btn" onclick="enregistrerFacture()"><i class="fas fa-save"></i> Enregistrer dans la base</button>
   </div>
 
+  <div id="champVirement" style="display:none; margin-top:10px;">
+    <input type="text" id="infoVirement" placeholder="Informations de virement bancaire">
+  </div>
+</div>
+
   <div class="facture" id="facture">
     <p class="logos"><img src="../pics/logo.png" alt="Logo"></p>
-    <h2><i class="fas fa-file-invoice-dollar"></i> Facture <span id="numFacture"></span></h2>
+    <h2><i class="fas fa-file-invoice-dollar"></i> Facture <span id="numFacture"><?= $nouveauNumero ?></span></h2>
     <p><strong>Entreprise :</strong> <span id="nomEntreprise">-</span></p>
     <p><strong>Client :</strong> <span id="nomClient">-</span></p>
     <p><strong>Date :</strong> <span id="dateFacture"></span></p>
