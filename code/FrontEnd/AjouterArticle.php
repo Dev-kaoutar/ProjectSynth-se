@@ -129,14 +129,16 @@ include '../BackEnd/Ajouter_Article.php';
                     <input type="number" name="prix_unitaire" placeholder="Prix unitaire (DH)" step="0.01" min="0" required>
                 </div>
 
-
+                <div class="input-group input-group-full">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <input type="number" name="seuil_minimum" placeholder="Seuil minimum" step="0.01" min="0" required>
+                </div>
 
             </div>
-            <div class="one-line">
-                <div class="input-group input-group-full">
-                    <i class="fas fa-align-left"></i>
-                    <textarea name="description" placeholder="Description" rows="3" required></textarea>
-                </div>
+
+            <div class="input-group input-group-full">
+                <i class="fas fa-align-left"></i>
+                <textarea name="description" placeholder="Description" rows="3" ></textarea>
             </div>
 
             <button type="submit" class="button">Ajouter article</button>
@@ -148,11 +150,9 @@ include '../BackEnd/Ajouter_Article.php';
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#categorie').select2(
-            {
-                placeholder: " Catégorie "
-            }
-        );
+        $('#categorie').select2({
+            placeholder: " Catégorie "
+        });
     });
 </script>
 

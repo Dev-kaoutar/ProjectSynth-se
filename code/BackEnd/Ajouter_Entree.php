@@ -69,6 +69,13 @@ try {
                 VALUES (?, ?, ?)
             ");
             $stmt->execute([$id_entree, $id_article, $quantite]);
+
+            // Mettre à jour le stock de l'article
+            $stmt = $pdo->prepare("UPDATE Article
+                SET quantite_stock = quantite_stock + ?
+                WHERE id_article = ?
+            ");
+            $stmt->execute([$quantite, $id_article]);
         }
 
         echo json_encode([
