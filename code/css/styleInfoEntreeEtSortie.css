@@ -42,6 +42,11 @@ body {
     color: #1793d5;
   }
   
+  span {
+    font-weight: 400;
+    color: black;
+  }
+
   input {
     padding: 10px;
     border: 1.5px solid #bbdefb;

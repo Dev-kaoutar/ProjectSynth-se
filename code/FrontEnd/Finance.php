@@ -2,7 +2,7 @@
 require_once '../DB/Config.php';
 
 // Récupération des articles
-$articles = $pdo->query("SELECT reference, designation FROM Article")->fetchAll(PDO::FETCH_ASSOC);
+$articles = $pdo->query("SELECT reference, designation, prix_vente FROM Article")->fetchAll(PDO::FETCH_ASSOC);
 
 // Récupération des clients
 $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO::FETCH_ASSOC);
@@ -10,7 +10,8 @@ $clients = $pdo->query("SELECT id_client, nom_client FROM Client")->fetchAll(PDO
 // Génération automatique du numéro de facture
 $dernierNumero = $pdo->query("SELECT MAX(id_facture) AS max_id FROM Facture")->fetch(PDO::FETCH_ASSOC)['max_id'] ?? 0;
 $nouveauNumero =  str_pad($dernierNumero + 1, 3, '0', STR_PAD_LEFT). "/" . date('Y');
-?>
+?> 
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -93,6 +94,24 @@ $nouveauNumero =  str_pad($dernierNumero + 1, 3, '0', STR_PAD_LEFT). "/" . date(
     <canvas id="qr" width="100" height="100"></canvas>
     <p class="footer">Merci pour votre confiance. Facture générée automatiquement.</p>
   </div>
+  <script>
+    // Récupérer les prix de vente des articles depuis PHP
+    const articlePrix = {
+      <?php foreach ($articles as $article): ?> 
+        "<?= htmlspecialchars($article['reference']) ?>": <?= json_encode($article['prix_vente'] ?? 0) ?>,
+      <?php endforeach; ?>
+    };
+
+    // Mettre à jour le prix unitaire lors du changement d'article
+    document.addEventListener('DOMContentLoaded', function() {
+      const articleSelect = document.getElementById('article');
+      const prixInput = document.getElementById('prix');
+      articleSelect.addEventListener('change', function() {
+        const ref = this.value;
+        prixInput.value = articlePrix[ref] !== undefined ? articlePrix[ref] : '';
+      });
+    });
+  </script>
   <script src="../JS/messageError&success.js"></script>
   <script src="../JS/enregistrerFacture.js"></script>
 </body>

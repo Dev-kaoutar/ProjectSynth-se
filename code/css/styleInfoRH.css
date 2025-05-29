@@ -108,14 +108,14 @@ button:hover {
 }
 
 .produits-table th {
-  padding: 12px;
+  padding: 0px;
   text-align: center;
   border-bottom: 1px solid #bbdefb;
   color: #1793d5;
 }
 
 .produits-table td {
-  padding: 12px;
+  padding: 0px;
   text-align: center;
   border-bottom: 1px solid #bbdefb;
   color: black;

@@ -4,7 +4,7 @@ include '../DB/Config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-        $stmt = $pdo->prepare("DELETE FROM Client WHERE id_client = :id");
+        $stmt = $pdo->prepare("UPDATE Client SET actif = 0 WHERE id_client = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 

@@ -12,6 +12,7 @@ CREATE TABLE Fournisseur (
     email VARCHAR(255),
     adresse VARCHAR(255),
     ville VARCHAR(100),
+    actif INT DEFAULT 1,
     date_inscription DATE
 );
             
@@ -23,6 +24,7 @@ CREATE TABLE Client (
     email VARCHAR(255),
     adresse VARCHAR(255),
     ville VARCHAR(100),
+    actif INT DEFAULT 1,
     date_inscription DATE
 );
 
@@ -44,7 +46,8 @@ CREATE TABLE Article (
     quantite_stock INT,
     prix_achat INT,
     prix_vente INT,
-    description TEXT
+    description TEXT,
+    seuil_minimum INT DEFAULT 10
 );
 
 -- Table EntreeStock
@@ -106,4 +109,10 @@ CREATE TABLE LigneFacture (
     id_article INT,
     FOREIGN KEY(id_facture) REFERENCES Facture(id_facture),
     FOREIGN KEY(id_article) REFERENCES Article(id_article)
+);
+
+CREATE TABLE admin_access (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL
 );

@@ -51,7 +51,7 @@ include '../BackEnd/DetailesClient.php';
         </div>
         <div class="form-group">
           <label>Date d'Inscription</label>
-          <input type="date" name="date_inscription" value="<?= date('Y-m-d'); ?>" readonly />
+          <input type="date" name="date_inscription" value="<?= $client["date_inscription"] ?>" readonly />
         </div>
       </div>
 

@@ -3,6 +3,22 @@ include '../DB/Config.php';
 include '../BackEnd/supprimerFournisseur.php'; // Include the backend logic for deleting a supplier
 include '../BackEnd/BEntreeParFournisseur.php';
 
+$limit = 25;
+
+// Déterminer la page actuelle à partir de l'URL (par défaut à 1)
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculer l'offset
+$offset = ($page - 1) * $limit;
+
+// Compter le nombre total d'articles
+$totalQuery = $pdo->query("SELECT COUNT(*) FROM Fournisseur");
+$totalArticles = $totalQuery->fetchColumn();
+$totalPages = ceil($totalArticles / $limit);
+
+$sql = "SELECT * FROM Fournisseur WHERE actif = 1 ORDER BY id_fournisseur LIMIT $limit OFFSET $offset"; // Fetch only active suppliers
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +41,7 @@ include '../BackEnd/BEntreeParFournisseur.php';
         </div>
         <a href="ajouterFournisseur.php" class="add-user"><i class="fas fa-user-plus"></i></a>
       </div>
-    </div>   
+    </div>
     <table>
       <thead>
         <tr>
@@ -40,9 +56,6 @@ include '../BackEnd/BEntreeParFournisseur.php';
       </thead>
       <tbody>
         <?php
-        $sql = "SELECT * FROM Fournisseur";
-        $stmt = $pdo->query($sql);
-
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
@@ -53,8 +66,8 @@ include '../BackEnd/BEntreeParFournisseur.php';
             echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
             echo "<td>" . htmlspecialchars($row['ville']) . "</td>"; // Added ville column
             echo "<td>
-                  <a href='InfoFornisseur.php?id=" . $row['id_fournisseur'] . "' class='view'><i class='fa-solid fa-eye'></i></a>
                   <a href='EntréesParFournisseur.php?id=" . $row['id_fournisseur'] . "' class='history'><i class='fa-solid fa-history'></i></a>
+                  <a href='InfoFornisseur.php?id=" . $row['id_fournisseur'] . "' class='edit'><i class='fas fa-edit'></i></a>
                   <a href='../BackEnd/supprimerFournisseur.php?id=" . $row['id_fournisseur'] . "' class='delete' onclick='return confirm(\"Voulez-vous vraiment supprimer ce fournisseur ?\")'><i class='fa-solid fa-trash-can'></i></a>
                 </td>";
             echo "</tr>";
@@ -66,6 +79,8 @@ include '../BackEnd/BEntreeParFournisseur.php';
 
       </tbody>
     </table>
+    <!-- Pagination -->
+    <?php include '../FrontEnd/Pagination.php'; ?>
   </div>
   <script src="../JS/Search.js"></script>
 </body>

@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="../CSS/style.css" />
     <link rel="stylesheet" href="../CSS/styleListes.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/selectWithSearch.css" />
     <style>
         .article-row {
             display: flex;
@@ -32,19 +36,21 @@
         }
 
         @media (max-width: 530px) {
-        
-          .list-container {
-            padding: 5px 0px;
-          }
-          table {
-            font-size: 10px;
-          }
-          th, td {
-            padding: 0px 1px;
-          }
 
-        } 
+            .list-container {
+                padding: 5px 0px;
+            }
 
+            table {
+                font-size: 10px;
+            }
+
+            th,
+            td {
+                padding: 0px 1px;
+            }
+
+        }
     </style>
 </head>
 
@@ -56,7 +62,7 @@
         <form id="sortieForm">
             <div class="form-grid">
                 <div class="input-group">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user icon-left"></i>
                     <select name="destinataire" id="destinataire">
                         <option value="">-- destinataire --</option>
                     </select>
@@ -69,7 +75,7 @@
 
             <div class="article-row">
                 <div class="input-group input-group-full">
-                    <i class="fas fa-tag"></i>
+                    <i class="fas fa-tag icon-left"></i>
                     <select name="nom" id="nom">
                         <option value="">-- Nom d'article --</option>
                     </select>
@@ -99,6 +105,18 @@
     </div>
     <script src="../JS/messageError&success.js"></script>
     <script src="../JS/Sorties.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialiser Select2 pour les champs de sélection
+            $('#destinataire').select2({
+                placeholder: " destinataire ",
+            });
+            $('#nom').select2({
+                placeholder: " Nom d'article ",
+            });
+        });
+    </script>
 </body>
 
 </html>

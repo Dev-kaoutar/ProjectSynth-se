@@ -55,7 +55,7 @@ header {
 main {
   padding: 30px 20px;
   max-width: 900px;
-  margin: 100px auto;
+  margin: auto;
 }
 
 @media (max-width: 768px) {
