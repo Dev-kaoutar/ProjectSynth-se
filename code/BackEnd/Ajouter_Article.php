@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $marque = trim($_POST['marque']);
     $prix_unitaire = floatval($_POST['prix_unitaire']);
     $description = trim($_POST['description']);
+    $seuil_minimum = $_POST['seuil_minimum'];
 
     // Validation des champs
     if (empty($categorie) || empty($reference) || empty($nom) || empty($marque) || $prix_unitaire <= 0) {
@@ -29,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $prix_vente = round($prix_unitaire * (1 + $marge), 2);
 
                 // Préparation de la requête pour insérer l'article
-                $stmt = $pdo->prepare("INSERT INTO Article (categorie, reference, designation, marque, prix_achat, description, prix_vente) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$categorie, $reference, $nom, $marque, $prix_unitaire, $description, $prix_vente]);
+                $stmt = $pdo->prepare("INSERT INTO Article (categorie, reference, designation, marque, prix_achat, description, prix_vente, quantite_stock, seuil_minimum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$categorie, $reference, $nom, $marque, $prix_unitaire, $description, $prix_vente, 0, $seuil_minimum ?? 10]);
                 $message = "Article ajouté avec succès.";
             } catch (PDOException $e) {
                 $erreur = "Erreur : " . $e->getMessage();

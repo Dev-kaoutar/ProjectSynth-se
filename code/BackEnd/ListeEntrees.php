@@ -24,7 +24,7 @@ $sql = "SELECT
         INNER JOIN LigneEntreeStock les ON es.id_entree = les.id_entree
         INNER JOIN Article a ON les.id_article = a.id_article
         GROUP BY es.id_entree, es.date_entree, f.nom_fournisseur
-        ORDER BY es.date_entree DESC
+        ORDER BY es.id_entree DESC
         LIMIT :limit OFFSET :offset";
 
 $stmt = $pdo->prepare($sql);
