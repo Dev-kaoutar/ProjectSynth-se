@@ -11,7 +11,10 @@ const totalTTC = document.getElementById("totalTTC");
 const tva = document.getElementById("tva");
 const modePaiementFacture = document.getElementById("modePaiementFacture");
 
-const qr = new QRious({ element: document.getElementById("qr"), size: 100 });
+const qr = new QRious({
+  element: document.getElementById("qr"),
+  size: 100,
+});
 
 let totalHtGeneral = 0;
 
@@ -47,7 +50,15 @@ function ajouterLigne() {
   nomEntreprise.textContent = entreprise;
   nomClient.textContent =
     clientSelect.options[clientSelect.selectedIndex].textContent;
-  modePaiementFacture.textContent = modePaiement;
+
+  // Verrouiller le mode de paiement après le premier ajout
+  if (
+    !modePaiementFacture.textContent ||
+    modePaiementFacture.textContent === "Virement bancaire"
+  ) {
+    modePaiementFacture.textContent = modePaiement;
+    document.getElementById("modePaiement").disabled = true;
+  }
 
   const total = prix * qte;
   totalHtGeneral += total;
@@ -64,7 +75,13 @@ function ajouterLigne() {
       </tr>
     `;
   corps.innerHTML += ligne;
-  lignes.push({ ref, article, qte, prix, total });
+  lignes.push({
+    ref,
+    article,
+    qte,
+    prix,
+    total,
+  });
   localStorage.setItem("lignes", JSON.stringify(lignes));
 
   totalHT.textContent = totalHtGeneral.toFixed(2) + " DH";
@@ -92,7 +109,7 @@ function enregistrerFacture() {
   const total_ht = parseFloat(totalHT.textContent.replace(" DH", ""));
   const tvaValue = parseFloat(tva.textContent.replace(" DH", ""));
   const total_ttc = parseFloat(totalTTC.textContent.replace(" DH", ""));
-  const mode_paiement = document.getElementById("modePaiement").value;
+  const mode_paiement = modePaiementFacture.textContent;
   const client = document.getElementById("client").value;
 
   if (!client || lignes.length === 0) {
@@ -126,7 +143,9 @@ function enregistrerFacture() {
       if (res.success) {
         afficherMessage("Facture enregistrée avec succès !", "success");
         localStorage.removeItem("lignes");
-        location.reload();
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
       } else {
         afficherMessage("Erreur : " + res.message, "error");
       }

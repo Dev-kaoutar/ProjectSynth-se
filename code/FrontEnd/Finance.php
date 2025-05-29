@@ -12,7 +12,6 @@ $dernierNumero = $pdo->query("SELECT MAX(id_facture) AS max_id FROM Facture")->f
 $nouveauNumero =  str_pad($dernierNumero + 1, 3, '0', STR_PAD_LEFT). "/" . date('Y');
 ?> 
 
-
 <!DOCTYPE html>
 <html lang="fr">
 
