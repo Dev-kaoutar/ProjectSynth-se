@@ -2,18 +2,18 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: #f0f6fc;
   padding: 20px;
+  margin-top: 70px;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulaire,
 .facture {
-  margin-top: 80px;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 50%;
+  width: 80%;
 }
 
 h2,
@@ -31,7 +31,7 @@ select {
 }
 
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   margin-top: 10px;
 }
@@ -63,7 +63,7 @@ td {
   margin-top: 20px;
 }
 .logos {
-  width: 70px;
+  width: 80%;
   height: 60px;
   opacity: 0.19;
 }

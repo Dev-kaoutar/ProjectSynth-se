@@ -162,10 +162,11 @@ document.getElementById("sortieForm").addEventListener("submit", function (e) {
       if (res.success) {
         afficherMessage("Articles ajoutés avec succès !");
         localStorage.removeItem("articles");
+        const articlesFacture = articles;
         articles = [];
         chargerArticles();
         setTimeout(() => {
-          window.location.href = "../FrontEnd/Exit.php";
+          window.location.href = "../FrontEnd/Finance.php?articles=" + JSON.stringify(articlesFacture);
         }, 2000);
       } else {
         afficherMessage("Erreur : " + res.message, "error");
