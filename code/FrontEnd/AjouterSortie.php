@@ -100,7 +100,7 @@
                 <tbody></tbody>
             </table>
 
-            <button type="submit" class="button">Valider la sortie</button>
+            <button type="submit" class="button">Valider sortie et générer facture</button>
         </form>
     </div>
     <script src="../JS/messageError&success.js"></script>
